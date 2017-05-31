@@ -1,11 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26014.0
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E179EDE1-6B30-4DE4-89EC-89F213075F1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "benjanderson.web", "src\benjanderson.web\benjanderson.web.csproj", "{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "benjanderson.web", "src\benjanderson.web\benjanderson.web.csproj", "{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B8E2DC5C-7909-4AB8-B253-6671B25F2E96}"
+	ProjectSection(SolutionItems) = preProject
+		.angular-cli.json = .angular-cli.json
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		benjanderson.sln.DotSettings = benjanderson.sln.DotSettings
+		karma.conf.js = karma.conf.js
+		package.json = package.json
+		protractor.conf.js = protractor.conf.js
+		README.md = README.md
+		tsconfig.json = tsconfig.json
+		tslint.json = tslint.json
+		yarn.lock = yarn.lock
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,16 +35,16 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Debug|x64.ActiveCfg = Debug|x64
-		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Debug|x64.Build.0 = Debug|x64
-		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Debug|x86.ActiveCfg = Debug|x86
-		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Debug|x86.Build.0 = Debug|x86
+		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Debug|x64.Build.0 = Debug|Any CPU
+		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Debug|x86.Build.0 = Debug|Any CPU
 		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Release|x64.ActiveCfg = Release|x64
-		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Release|x64.Build.0 = Release|x64
-		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Release|x86.ActiveCfg = Release|x86
-		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Release|x86.Build.0 = Release|x86
+		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Release|x64.ActiveCfg = Release|Any CPU
+		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Release|x64.Build.0 = Release|Any CPU
+		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Release|x86.ActiveCfg = Release|Any CPU
+		{9F2AB022-6C45-4DBB-B30C-0C801C32A8F1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
