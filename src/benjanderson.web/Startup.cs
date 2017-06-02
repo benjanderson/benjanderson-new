@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using benjanderson.web.Data;
+using System.IO;
 
 namespace benjanderson.web
 {
@@ -66,18 +62,27 @@ namespace benjanderson.web
 
           public void ConfigureSinglePageApplication(IApplicationBuilder app)
           {
-               DefaultFilesOptions options = new DefaultFilesOptions();
-               options.DefaultFileNames.Clear();
-               options.DefaultFileNames.Add("index.html");
-               app.UseDefaultFiles(options);
-               app.UseStaticFiles();
-
                app.UseMvc(routes =>
                {
                     routes.MapRoute("default", "{controller}/{action=Index}");
-
-                    routes.MapRoute("Spa", "{*url}", defaults: new { controller = "Home", action = "Spa" });
                });
+
+               app.Use(async (context, next) =>
+               {
+                    await next();
+
+                    // If there's no available file and the request doesn't contain an extension, we're probably trying to access a page.
+                    // Rewrite request to use app root
+                    if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
+                    {
+                         context.Request.Path = "/index.html"; 
+                         context.Response.StatusCode = 200; // Make sure we update the status code, otherwise it returns 404
+                         await next();
+                    }
+               });
+
+               // Serve wwwroot as root
+               app.UseFileServer();
           }
      }
 }
