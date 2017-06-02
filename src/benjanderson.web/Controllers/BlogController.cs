@@ -27,6 +27,8 @@ namespace benjanderson.web.Controllers
                          return RedirectPermanent("https://medium.com/@BenJAnderson/set-focus-to-control-aspnet-using-c-21cf7c6261e7");
                     case 2008:
                          return RedirectPermanent("https://medium.com/@BenJAnderson/android-listview-that-is-filterable-and-indexable-8e1e46cf0f88");
+                    case 2009:
+                         return RedirectPermanent("https://medium.com/@BenJAnderson/crashing-c-compiler-bed04b85a027")
                }
 
                switch (title?.ToLower())
@@ -39,6 +41,8 @@ namespace benjanderson.web.Controllers
                          return RedirectPermanent("https://medium.com/@BenJAnderson/set-focus-to-control-aspnet-using-c-21cf7c6261e7");
                     case "android-listview-that-is-filterable-and-indexable":
                          return RedirectPermanent("https://medium.com/@BenJAnderson/android-listview-that-is-filterable-and-indexable-8e1e46cf0f88");
+                    case "crashing-c-sharp-compiler":
+                         return RedirectPermanent("https://medium.com/@BenJAnderson/crashing-c-compiler-bed04b85a027");
                }
 
                return Redirect("https://medium.com/@BenJAnderson");
