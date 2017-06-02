@@ -28,7 +28,7 @@ namespace benjanderson.web.Controllers
                     case 2008:
                          return RedirectPermanent("https://medium.com/@BenJAnderson/android-listview-that-is-filterable-and-indexable-8e1e46cf0f88");
                     case 2009:
-                         return RedirectPermanent("https://medium.com/@BenJAnderson/crashing-c-compiler-bed04b85a027")
+                         return RedirectPermanent("https://medium.com/@BenJAnderson/crashing-c-compiler-bed04b85a027");
                }
 
                switch (title?.ToLower())

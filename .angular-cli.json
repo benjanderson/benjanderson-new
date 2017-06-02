@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
     "name": "benjanderson"
@@ -7,10 +7,10 @@
     {
       "root": "src/benjanderson.web",
       "outDir": "src/benjanderson.web/wwwroot",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
+     "assets": [
+          "assets",
+          "favicon.ico"
+     ],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
