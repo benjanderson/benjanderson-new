@@ -1,53 +1,5 @@
 @import './../../Styles/variables.scss';
 
-//******************************************************
-//                       NAVIGATION
-//******************************************************
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-
-nav {
-  text-align: right;
-  a {
-    color: $foreground;
-    text-decoration: none;
-    font-weight: 500;
-    transition:.3s;
-    &:hover {
-          color: $accent;
-    }
-  }
-}
-
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  @media (min-width: $small) {
-        width: 750px;
-  }
-  @media (min-width: $medium) {
-        width: 970px;
-  }
-  @media (min-width: $large) {
-    width: 1170px;
-  }
-}
-
-//******************************************************
-//                       CONTENT
-//******************************************************
-
 #greeting {
   animation: fadein 4s;
   p {

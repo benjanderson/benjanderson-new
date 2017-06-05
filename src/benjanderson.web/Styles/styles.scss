@@ -9,3 +9,19 @@ html, body {
   color: $foreground;
   background-color:$background;
 }
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  @media (min-width: $small) {
+        width: 750px;
+  }
+  @media (min-width: $medium) {
+        width: 970px;
+  }
+  @media (min-width: $large) {
+    width: 1170px;
+  }
+}
