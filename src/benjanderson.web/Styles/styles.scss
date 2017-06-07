@@ -1,27 +1,14 @@
-@import './variables.scss';
+@import './_variables.scss';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+@import '../../../node_modules/font-awesome/scss/font-awesome';
 
-html, body {
-  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1.6;
-  color: $foreground;
-  background-color:$background;
+html,
+body {
+  height: 100%;
+  background-color: $background;
 }
-
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  @media (min-width: $small) {
-        width: 750px;
-  }
-  @media (min-width: $medium) {
-        width: 970px;
-  }
-  @media (min-width: $large) {
-    width: 1170px;
-  }
+body {
+  color: $white;
+  text-align: center;
+  text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
 }

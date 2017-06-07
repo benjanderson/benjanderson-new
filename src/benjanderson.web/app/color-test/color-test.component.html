@@ -1,3 +1,94 @@
-<p>
-  color-test works!
-</p>
+<div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <ul class="sortable" dnd-sortable-container [sortableData]="colorArray1.Colors">   
+                  <li [ngStyle]="getStyle(colorArray1.Color1)"></li>
+                  <li *ngFor="let color of colorArray1.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable draggable="false">&nbsp;</li>
+                  <li [ngStyle]="getStyle(colorArray1.Color2)"></li>
+              </ul>
+              <ul class="sortable" dnd-sortable-container [sortableData]="colorArray2.Colors">
+                  <li [ngStyle]="getStyle(colorArray2.Color1)"></li>
+                  <li *ngFor="let color of colorArray2.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable draggable="true">&nbsp;</li>
+                  <li [ngStyle]="getStyle(colorArray2.Color2)"></li>
+              </ul>
+              <ul class="sortable" dnd-sortable-container [sortableData]="colorArray3.Colors">
+                  <li [ngStyle]="getStyle(colorArray3.Color1)"></li>
+                  <li *ngFor="let color of colorArray3.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable draggable="true">&nbsp;</li>
+                  <li [ngStyle]="getStyle(colorArray3.Color2)"></li>
+              </ul>
+              <ul class="sortable" dnd-sortable-container [sortableData]="colorArray4.Colors">
+                  <li [ngStyle]="getStyle(colorArray4.Color1)"></li>
+                  <li *ngFor="let color of colorArray4.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable draggable="true">&nbsp;</li>
+                  <li [ngStyle]="getStyle(colorArray4.Color2)"></li>
+              </ul>
+          </div>
+      </div>
+      <div class="row" style="display:none">
+          <div class="col-md-8">
+              <div id="helpInfo" class="alert alert-info col-md-8 pull-right">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <h4><i class="icon-info-sign"></i>&nbsp;How to play</h4>
+                  Drag and drop the colors in each row to arrange them by hue order. The first and last color chips are fixed.
+                  <img src="http://benjaminjanderson.com/Content/images/help.gif" />
+              </div>
+              <h1 data-bind="text: title"></h1>
+          </div>
+      </div>
+      <div class="row" style="display:none">
+          <div class="col-md-8">
+              <a class="btn" id="btnScore">
+                  <i class="icon-ok"></i>&nbsp;Score Test</a>
+
+          </div>
+
+      </div>
+      <div class="row">
+          <div class="col-md-8">
+              <div id="divScore" style="display: none;">
+                  <span class='large-text'>You Scored</span>
+                  <span id='lblScore' class="score"></span>
+
+              </div>
+          </div>
+
+      </div>
+      <div class="row">
+          <div class="col-md-8">
+              <form id="ageForm" style="display: none;">
+                  <fieldset>
+                      <legend>Submit your age and gender to see how everyone else did</legend>
+                      <label>Age</label>
+                      <input id="age" type="text" placeholder="Type Age here..." style="width: 150px">
+                      <label class="radio">
+                          <input id="male" type="radio" name="optionsRadios" id="optionsRadios1" value="m" class="required">
+                          Male
+                      </label>
+                      <label class="radio">
+                          <input id="female" type="radio" name="optionsRadios" id="optionsRadios2" value="f" class="required">
+                          Female
+                      </label>
+                      <button id="btnSubmitAge" type="submit" class="btn">Submit</button>
+                  </fieldset>
+              </form>
+          </div>
+      </div>
+      <div class="row" id="infoRow" style="display: none">
+          <div class="col-md-8">
+              <h2>Statistics</h2>
+              <hr />
+              <span id="others" class="large-text"></span>
+          </div>
+      </div>
+      <div id="flot-container" class="clear-fix col-md-8" style="display: none;">
+          <div id="flot"></div>
+      </div>
+</div>
+
+<!--<div class="col-md-2">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4>My online experiment</h4>
+                    <p>I built this game out of pure curiosity on how age and gender determines color sensitivity. I am a web developer and it was a fun to build the two weekends I spent on it. If you have any suggestions feel free to get in contact with me. I owe original credit for the idea for the color test to this <a href="http://www.xrite.com/hue-test?pageid=77" target="_blank">Site</a></p>
+                </div>
+            </div>
+        </div>-->
