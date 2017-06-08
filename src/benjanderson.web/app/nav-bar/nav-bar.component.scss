@@ -4,9 +4,9 @@
  * Header
  */
 
-.masthead-brand {
-  margin-bottom: 0;
-}
+ :host{
+   float:right;
+ }
 
 .masthead {
   margin-bottom: 2rem;
@@ -40,11 +40,3 @@
   border-bottom-color: $white;
 }
 
-@media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
-}
