@@ -1,11 +1,12 @@
 {
   "name": "benjanderson",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --sourcemap --extractCss",
     "build": "ng build",
+    "release": "ng build -p",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -48,7 +49,6 @@
     "tslint": "~4.5.0",
     "typescript": "~2.2.0"
   },
-  "main": "index.js",
   "repository": "https://github.com/benjanderson/benjanderson-new.git",
   "author": "Ben Anderson <ben.anderson@healthcatalyst.com>"
 }
