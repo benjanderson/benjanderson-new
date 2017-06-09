@@ -1,80 +1,29 @@
 @import './../../Styles/_variables.scss';
 
+:host{
+  height:100%;
+  display: block;
+}
+
 @keyframes fadein {
   from {
     opacity: 0;
   }
 
   to {
-    opacity: 1;
+    opacity: .5;
   }
 }
 
-#greeting {
-  animation: fadein 4s;
-  .lead{
-    @media (min-width: $small) { font-size:1.5em; }
-    @media (min-width: $medium) { font-size:2em; }
-    @media (min-width: $large) { font-size:2.5em; }
-  }
-}
-
-#name{
+.accent{
   color:$accent;
 }
-
-
-/* Extra markup and styles for table-esque vertical and horizontal centering */
-.site-wrapper {
-  display: table;
-  width: 100%;
-  height: 100%; /* For at least Firefox */
-  min-height: 100%;
-  -webkit-box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
-          box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
-  background-color: $background;
-  color: $white;
-  text-align: center;
-  text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
-
-  /* background image */
-  //background: url("http://i.imgur.com/omX6S7A.png") no-repeat center center fixed;
-  //background-size: cover;
-}
-.site-wrapper-inner {
-  display: table-cell;
-  vertical-align: top;  
-}
-.cover-container {
-  margin-right: auto;
-  margin-left: auto;
-  
-}
-
-/* Padding for spacing */
-.inner {
-  padding: 2rem;
-  //background-color:$background;
-}
-
-/*
- * Cover
- */
-
-.cover {
-  padding: 0 1.5rem;
-}
-.cover .btn-lg {
-  padding: .75rem 1.25rem;
-  font-weight: bold;
-}
-
 
 /*
  * Footer
  */
 
-.mastfoot {
+.footer {
   a{
     color: $secondary;
     margin: .2em;
@@ -113,40 +62,79 @@
       color: $white;
     }
   }
+
+  .medium:hover,.medium:active{
+    color: $white;
+    .fa-main {
+      color: rgb(11, 227, 112);
+    }
+  }
 }
 
-
-
-/*
- * Affix and center
- */
-
-@media (min-width: 40em) {
-  /* Pull out the header and footer */
-  .masthead {
-    position: fixed;
-    top: 0;
-  }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
-  }
-  /* Start the vertical centering */
-  .site-wrapper-inner {
-    vertical-align: middle;
-  }
-  /* Handle the widths */
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
-  }  
+.wrapper {
+  height:100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: url("http://i.imgur.com/bVpnYyY.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
-@media (min-width: 62em) {
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 42rem;
+.footer, .header, .main {
+  display: flex;
+}
+
+.main {
+  height:100%;
+  .inner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.inner {
+  color: $white;
+  background-color: rgba(100, 100, 100, .7);
+  padding: 15px;
+  
+  //animation: fadein 3s;
+  .lead {
+    @media (min-width: $small) { font-size:1.5em; }
+    @media (min-width: $medium) { font-size:2em; }
+    @media (min-width: $large) { font-size:2.5em; }
+  }
+}
+
+.side {
+  opacity: 0;
+  background-color: transparent;
+}
+
+@media only screen and (min-width: 768px) {
+    .inner {
+    flex: 2;
+  }
+  .side{
+    flex: 1;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+    .inner {
+    flex: 4;
+  }
+  .side{
+    flex: 1;
+  }
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    .inner {
+    flex: 6;
+  }
+  .side{
+    flex: 1;
   }
 }
