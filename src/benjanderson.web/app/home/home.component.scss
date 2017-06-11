@@ -11,7 +11,7 @@
   }
 
   to {
-    opacity: .5;
+    opacity: 1;
   }
 }
 
@@ -72,69 +72,22 @@
 }
 
 .wrapper {
-  height:100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
   text-align: center;
   background: url("http://i.imgur.com/YZo7eMz.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
-.footer, .header, .main {
-  display: flex;
-}
-
-.main {
-  height:100%;
-  .inner {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
-}
-
 .inner {
-  color: $white;
   background-color: rgba(100, 100, 100, .7);
-  padding: 15px;
-  
-  //animation: fadein 3s;
-  .lead {
-    @media (min-width: $small) { font-size:1.5em; }
-    @media (min-width: $medium) { font-size:2em; }
-    @media (min-width: $large) { font-size:2.5em; }
-  }
 }
+
+.cover-heading, .lead{
+  animation: fadein 3s;
+}
+
+
 
 .side {
   opacity: 0;
   background-color: transparent;
-}
-
-@media only screen and (min-width: 768px) {
-    .inner {
-    flex: 2;
-  }
-  .side{
-    flex: 1;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-    .inner {
-    flex: 4;
-  }
-  .side{
-    flex: 1;
-  }
-}
-
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-    .inner {
-    flex: 6;
-  }
-  .side{
-    flex: 1;
-  }
 }

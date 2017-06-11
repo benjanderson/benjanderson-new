@@ -7,36 +7,35 @@ import { sampleSize } from 'lodash';
   styleUrls: ['./color-test.component.scss']
 })
 export class ColorTestComponent implements OnInit {
-  public colorArray1: ColorArray;
-  public colorArray2: ColorArray;
-  public colorArray3: ColorArray;
-  public colorArray4: ColorArray;
-  private numElements = 13;
-
-  constructor() { }
-
-  ngOnInit() {
-    this.colorArray1 = {
+  public colorArray1: ColorArray= {
       Color1: new Color(172, 118, 114),
       Color2: new Color(143, 140, 74),
       Colors: []
     };
-    this.colorArray2 = {
+
+  public colorArray2: ColorArray= {
       Color1: new Color(143, 140, 74),
       Color2: new Color(84, 151, 137),
       Colors: []
     };
-    this.colorArray3 = {
+
+  public colorArray3: ColorArray= {
       Color1: new Color(84, 151, 137),
       Color2: new Color(128, 136, 165),
       Colors: []
     };
-    this.colorArray4 = {
+
+  public colorArray4: ColorArray= {
       Color1: new Color(128, 136, 165),
       Color2: new Color(172, 118, 114),
       Colors: []
     };
 
+  private numElements = 13;
+
+  constructor() { }
+
+  ngOnInit() {
     for (let i = 1; i < this.numElements; i++) {
       this.colorArray1.Colors.push(this.setColor(i, this.colorArray1));
       this.colorArray2.Colors.push(this.setColor(i, this.colorArray2));
@@ -44,10 +43,10 @@ export class ColorTestComponent implements OnInit {
       this.colorArray4.Colors.push(this.setColor(i, this.colorArray4));
     }
 
-    // this.colorArray1.Colors = sampleSize(this.colorArray1.Colors, this.colorArray1.Colors.length);
-    // this.colorArray2.Colors = sampleSize(this.colorArray2.Colors, this.colorArray2.Colors.length);
-    // this.colorArray3.Colors = sampleSize(this.colorArray3.Colors, this.colorArray3.Colors.length);
-    // this.colorArray4.Colors = sampleSize(this.colorArray4.Colors, this.colorArray4.Colors.length);
+    this.colorArray1.Colors = sampleSize(this.colorArray1.Colors, this.colorArray1.Colors.length);
+    this.colorArray2.Colors = sampleSize(this.colorArray2.Colors, this.colorArray2.Colors.length);
+    this.colorArray3.Colors = sampleSize(this.colorArray3.Colors, this.colorArray3.Colors.length);
+    this.colorArray4.Colors = sampleSize(this.colorArray4.Colors, this.colorArray4.Colors.length);
   }
 
   public getStyle(color: Color) {

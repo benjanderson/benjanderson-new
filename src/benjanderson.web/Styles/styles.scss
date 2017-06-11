@@ -6,3 +6,69 @@ html,
 body {
   height: 100%;
 }
+
+
+
+.wrapper {
+  height:100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer, .header, .main {
+  display: flex;
+}
+
+.main {
+  height:100%;
+  .inner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.inner {
+  color: $white;
+  background-color: $background;
+  padding: 15px;
+  
+  //animation: fadein 3s;
+  .lead {
+    @media (min-width: $small) { font-size:1.5em; }
+    @media (min-width: $medium) { font-size:2em; }
+    @media (min-width: $large) { font-size:2.5em; }
+  }
+}
+
+.side {
+  background-color: $background;
+}
+
+@media only screen and (min-width: 768px) {
+    .inner {
+    flex: 2;
+  }
+  .side{
+    flex: 1;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+    .inner {
+    flex: 4;
+  }
+  .side{
+    flex: 1;
+  }
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    .inner {
+    flex: 6;
+  }
+  .side{
+    flex: 1;
+  }
+}

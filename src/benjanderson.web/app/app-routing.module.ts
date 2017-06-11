@@ -6,7 +6,8 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'color-test', component: ColorTestComponent }
+    { path: 'color-test', component: ColorTestComponent, pathMatch: 'full' },
+    { path: '**', component: HomeComponent }
 ];
 
 @NgModule({
