@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace benjanderson.web.Controllers
 {
+<<<<<<< HEAD
      public class HomeController : Controller
      {
           [Route("/")]
@@ -14,4 +15,18 @@ namespace benjanderson.web.Controllers
                return File("~/index.html", "text/html");
           }
      }
+=======
+    public class HomeController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Error()
+        {
+            return View();
+        }
+    }
+>>>>>>> 0b84436... remove fluff and get to starting point
 }
