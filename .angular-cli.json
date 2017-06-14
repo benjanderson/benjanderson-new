@@ -22,6 +22,7 @@
         "Styles/styles.scss"
       ],
       "scripts": [
+        "./assets/DragDropTouch.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
