@@ -31,8 +31,7 @@ body {
 
 .inner {
   color: $white;
-  background-color: $background;
-  padding: 15px;
+  background-color: $background;  
   
   //animation: fadein 3s;
   .lead {
@@ -47,7 +46,8 @@ body {
 }
 
 @media only screen and (min-width: 768px) {
-    .inner {
+  .inner {
+    padding: 15px;
     flex: 2;
   }
   .side{
@@ -56,8 +56,9 @@ body {
 }
 
 @media only screen and (max-width: 767px) {
-    .inner {
-    flex: 4;
+  .inner {
+    padding: 10px;
+    flex: 6;
   }
   .side{
     flex: 1;
@@ -65,8 +66,9 @@ body {
 }
 
 @media only screen and (max-width: 767px) and (orientation: portrait) {
-    .inner {
-    flex: 6;
+  .inner {
+    padding: 5px;
+    flex: 12;
   }
   .side{
     flex: 1;
