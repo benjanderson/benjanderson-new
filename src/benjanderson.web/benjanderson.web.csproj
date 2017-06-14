@@ -1,8 +1,4 @@
 ﻿<Project ToolsVersion="15.0" Sdk="Microsoft.NET.Sdk.Web">
-<<<<<<< HEAD
-
-=======
->>>>>>> 0b84436... remove fluff and get to starting point
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp1.1</TargetFramework>
