@@ -71,8 +71,18 @@
 
 .wrapper {
   text-align: center;
-  background: url("http://files.benjaminjanderson.com/benjaminjandersonblob/wyoming-mountains.jpg") no-repeat center center fixed;
-  background-size: cover;
+  
+  @include desktop{
+    background: url("http://files.benjaminjanderson.com/benjaminjandersonblob/wyoming-mountains.jpg") no-repeat center center fixed;
+    background-size: cover;
+  }
+  @include tablet{
+    background: url("http://files.benjaminjanderson.com/benjaminjandersonblob/wyoming-mountains.jpg") no-repeat center center fixed;
+    background-size: cover;
+  }
+  @include phone{
+    // no background to save data
+  }
 }
 
 .inner {
