@@ -7,8 +7,6 @@ body {
   height: 100%;
 }
 
-
-
 .wrapper {
   height:100%;
   box-sizing: border-box;
@@ -24,20 +22,24 @@ body {
   height:100%;
   .inner {
     display: flex;
-    justify-content: center;
     flex-direction: column;
   }
 }
 
 .inner {
-  color: $white;
+  color: $foreground;
   background-color: $background;  
   
-  //animation: fadein 3s;
   .lead {
-    @media (min-width: $small) { font-size:1.5em; }
-    @media (min-width: $medium) { font-size:2em; }
-    @media (min-width: $large) { font-size:2.5em; }
+    @include phone{
+      font-size:1.5em;
+    }
+    @include tablet{
+      font-size:2em;
+    }
+    @include desktop{
+      font-size:2.5em;
+    }
   }
 }
 
@@ -45,32 +47,21 @@ body {
   background-color: $background;
 }
 
-@media only screen and (min-width: 768px) {
-  .inner {
-    padding: 15px;
-    flex: 2;
-  }
-  .side{
-    flex: 1;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .inner {
-    padding: 10px;
-    flex: 6;
-  }
-  .side{
-    flex: 1;
-  }
-}
-
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-  .inner {
+.inner{
+  @include phone{
     padding: 5px;
     flex: 12;
   }
-  .side{
-    flex: 1;
+  @include tablet{
+    padding: 10px;
+    flex: 6;
   }
+  @include desktop{
+    padding: 15px;
+    flex: 2;
+  }
+}
+
+.side{
+   flex: 1;
 }

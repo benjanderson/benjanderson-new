@@ -33,6 +33,8 @@ export class ColorTestComponent implements OnInit {
 
   private numElements = 13;
 
+  public showHelp = true;
+
   constructor() { }
 
   ngOnInit() {
@@ -53,6 +55,10 @@ export class ColorTestComponent implements OnInit {
     return {
       'background-color': 'rgb(' + color.red + ', ' + color.green + ', ' + color.blue + ')'
     };
+  }
+
+  public hideHelp(){
+    this.showHelp = false;
   }
 
   private setColor(index: number, array: ColorArray): Color {

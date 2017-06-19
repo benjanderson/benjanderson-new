@@ -15,9 +15,7 @@
   }
 }
 
-.accent{
-  color:$accent;
-}
+
 
 /*
  * Footer
@@ -25,12 +23,12 @@
 
 .footer {
   a{
-    color: $secondary;
+    color: $light-grey;
     margin: .2em;
   }
 
   text-shadow: none;
-  color: $secondary;
+  color: $light-grey;
   .fa-main {
     color: $background;
   }
@@ -78,13 +76,20 @@
 }
 
 .inner {
-  background-color: rgba(100, 100, 100, .7);
+  background-color: rgba($background, .7);
 }
 
 .cover-heading, .lead{
   animation: fadein 3s;
 }
 
+.accent{
+  color:$accent;
+}
+
+.main .inner{
+  justify-content: center;
+}
 
 
 .side {
