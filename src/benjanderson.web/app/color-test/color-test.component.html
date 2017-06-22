@@ -9,46 +9,64 @@
     <div class="main">
         <div class="side"></div>
         <div class="inner">
-            <div [hidden]="!showHelp">
-                <h1>Color Test</h1>
+            <h1>Color Test</h1>
+            <div [hidden]="!helpVisible">
                 <p>
                     Are you among the 1 in 255 women and 1 in 12 men who have some form of color vision deficiency? If you work in a field where
                     color is important, or you’re just curious about your color IQ, take our online challenge to find out.
                     Based on the Farnsworth Munsell 100 Hue Test, this online challenge is a fun, quick way to understand
-                    your color vision acuity. - See more at: http://www.xrite.com/hue-test?pageid=77#sthash.S0BzXpl9.dpuf
+                    your color vision acuity. 
                 </p>
-                <h4><i class="icon-info-sign"></i>&nbsp;How to play</h4>
+                <h4><i class="icon-info-sign"></i>How to play</h4>
+                <ol>
+                    <li>The first and last color are fixed</li>
+                    <li>Drag and drop the colors in each row to arrange them by hue order</li>
+                    <li>Click "Score My Test" after sorting all 4 lists</li>
+                </ol>
                 <p>
-                    Drag and drop the colors in each row to arrange them by hue order. The first and last color chips are fixed.
+                    <a href="http://www.xrite.com/hue-test?pageid=77#sthash.S0BzXpl9.dpuf">See this site for the orignal</a>
                 </p>
-                <img src="http://files.benjaminjanderson.com/benjaminjandersonblob/color-picker-helpgif" />
+                <img class="img-fluid" src="http://files.benjaminjanderson.com/benjaminjandersonblob/color-picker-helpgif" />
                 <button (click)="hideHelp()" class="btn btn-primary">Lets go!</button>
             </div>
-            <div [hidden]="showHelp">
+            <div [hidden]="helpVisible">
+                <p>
+                    Good luck! Remember to Drag and drop the colors in each row to arrange them by hue order
+                </p>
                 <ul class="sortable" dnd-sortable-container [sortableData]="colorArray1.Colors" [dropZones]="['1']">
                     <li [ngStyle]="getStyle(colorArray1.Color1)"></li>
-                    <li *ngFor="let color of colorArray1.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
-                        draggable="true">&nbsp;</li>
+                    <li *ngFor="let color of colorArray1.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable 
+                        draggable="true" [ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled">
+                        <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div></li>
                     <li [ngStyle]="getStyle(colorArray1.Color2)"></li>
                 </ul>
                 <ul class="sortable" dnd-sortable-container [sortableData]="colorArray2.Colors" [dropZones]="['2']">
                     <li [ngStyle]="getStyle(colorArray2.Color1)"></li>
                     <li *ngFor="let color of colorArray2.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
-                        draggable="true">&nbsp;</li>
+                        draggable="true"[ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled">
+                        <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div></li>
                     <li [ngStyle]="getStyle(colorArray2.Color2)"></li>
                 </ul>
                 <ul class="sortable" dnd-sortable-container [sortableData]="colorArray3.Colors" [dropZones]="['3']">
                     <li [ngStyle]="getStyle(colorArray3.Color1)"></li>
                     <li *ngFor="let color of colorArray3.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
-                        draggable="true">&nbsp;</li>
+                        draggable="true"[ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled">
+                        <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div></li>
                     <li [ngStyle]="getStyle(colorArray3.Color2)"></li>
                 </ul>
                 <ul class="sortable" dnd-sortable-container [sortableData]="colorArray4.Colors" [dropZones]="['4']">
                     <li [ngStyle]="getStyle(colorArray4.Color1)"></li>
                     <li *ngFor="let color of colorArray4.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
-                        draggable="true">&nbsp;</li>
+                        draggable="true"[ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled">
+                        <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div></li>
                     <li [ngStyle]="getStyle(colorArray4.Color2)"></li>
                 </ul>
+                <button (click)="scoreTest()" class="btn btn-primary">Score My Test</button>  
+                <button (click)="reset()" [hidden]="!scoreVisible" class="btn btn-secondary">Reset</button>              
+                <button (click)="showHelp()" class="btn btn-link">Go back</button>
+            </div>
+            <div [hidden]="!scoreVisible">
+                <span class='large-text'>You Scored {{score | percent}}</span>
             </div>
         </div>
         <div class="side"></div>
@@ -71,11 +89,7 @@
     </div>
     <div class="row">
         <div class="col-md-8">
-            <div id="divScore" style="display: none;">
-                <span class='large-text'>You Scored</span>
-                <span id='lblScore' class="score"></span>
-
-            </div>
+            
         </div>
 
     </div>

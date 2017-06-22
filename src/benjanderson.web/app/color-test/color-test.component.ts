@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { sampleSize } from 'lodash';
+import { NgbPopoverWindow } from '@ng-bootstrap/ng-bootstrap/popover/popover';
 
 @Component({
   selector: 'app-color-test',
@@ -7,48 +8,66 @@ import { sampleSize } from 'lodash';
   styleUrls: ['./color-test.component.scss']
 })
 export class ColorTestComponent implements OnInit {
-  public colorArray1: ColorArray= {
-      Color1: new Color(172, 118, 114),
-      Color2: new Color(143, 140, 74),
-      Colors: []
-    };
-
-  public colorArray2: ColorArray= {
-      Color1: new Color(143, 140, 74),
-      Color2: new Color(84, 151, 137),
-      Colors: []
-    };
-
-  public colorArray3: ColorArray= {
-      Color1: new Color(84, 151, 137),
-      Color2: new Color(128, 136, 165),
-      Colors: []
-    };
-
-  public colorArray4: ColorArray= {
-      Color1: new Color(128, 136, 165),
-      Color2: new Color(172, 118, 114),
-      Colors: []
-    };
-
+  @HostBinding('attr.myHilite') popover = new NgbPopoverWindow();
   private numElements = 13;
+  public colorArray1: ColorArray = {
+    Color1: new Color(-1, 172, 118, 114),
+    Color2: new Color(this.numElements, 143, 140, 74),
+    Colors: []
+  };
 
-  public showHelp = true;
+  public colorArray2: ColorArray = {
+    Color1: new Color(-1, 143, 140, 74),
+    Color2: new Color(this.numElements, 84, 151, 137),
+    Colors: []
+  };
+
+  public colorArray3: ColorArray = {
+    Color1: new Color(-1, 84, 151, 137),
+    Color2: new Color(this.numElements, 128, 136, 165),
+    Colors: []
+  };
+
+  public colorArray4: ColorArray = {
+    Color1: new Color(-1, 128, 136, 165),
+    Color2: new Color(this.numElements, 172, 118, 114),
+    Colors: []
+  };
+
+  public helpVisible = false;
+
+  public scoreVisible = false;
+
+  public score: number;
 
   constructor() { }
 
   ngOnInit() {
+    const setColor = (index: number, array: ColorArray): Color => {
+      if (index === 0) {
+        return array.Color1;
+      }
+      if (index === this.numElements - 1) {
+        return array.Color2;
+      }
+
+      const rAvg = (array.Color2.red - array.Color1.red) / this.numElements;
+      const gAvg = (array.Color2.green - array.Color1.green) / this.numElements;
+      const bAvg = (array.Color2.blue - array.Color1.blue) / this.numElements;
+      const red = Math.floor(array.Color1.red + (rAvg * index));
+      const green = Math.floor(array.Color1.green + (gAvg * index));
+      const blue = Math.floor(array.Color1.blue + (bAvg * index));
+      return new Color(index - 1, red, green, blue);
+    };
+
     for (let i = 1; i < this.numElements; i++) {
-      this.colorArray1.Colors.push(this.setColor(i, this.colorArray1));
-      this.colorArray2.Colors.push(this.setColor(i, this.colorArray2));
-      this.colorArray3.Colors.push(this.setColor(i, this.colorArray3));
-      this.colorArray4.Colors.push(this.setColor(i, this.colorArray4));
+      this.colorArray1.Colors.push(setColor(i, this.colorArray1));
+      this.colorArray2.Colors.push(setColor(i, this.colorArray2));
+      this.colorArray3.Colors.push(setColor(i, this.colorArray3));
+      this.colorArray4.Colors.push(setColor(i, this.colorArray4));
     }
 
-    this.colorArray1.Colors = sampleSize(this.colorArray1.Colors, this.colorArray1.Colors.length);
-    this.colorArray2.Colors = sampleSize(this.colorArray2.Colors, this.colorArray2.Colors.length);
-    this.colorArray3.Colors = sampleSize(this.colorArray3.Colors, this.colorArray3.Colors.length);
-    this.colorArray4.Colors = sampleSize(this.colorArray4.Colors, this.colorArray4.Colors.length);
+    this.randomizeColors();
   }
 
   public getStyle(color: Color) {
@@ -57,30 +76,76 @@ export class ColorTestComponent implements OnInit {
     };
   }
 
-  public hideHelp(){
-    this.showHelp = false;
+  public hideHelp() {
+    this.helpVisible = false;
   }
 
-  private setColor(index: number, array: ColorArray): Color {
-    if (index === 0) {
-      return array.Color1;
-    }
-    if (index === this.numElements - 1) {
-      return array.Color2;
-    }
+  public showHelp() {
+    this.helpVisible = true;
+  }
 
-    const rAvg = (array.Color2.red - array.Color1.red) / this.numElements;
-    const gAvg = (array.Color2.green - array.Color1.green) / this.numElements;
-    const bAvg = (array.Color2.blue - array.Color1.blue) / this.numElements;
-    const red = Math.floor(array.Color1.red + (rAvg * index));
-    const green = Math.floor(array.Color1.green + (gAvg * index));
-    const blue = Math.floor(array.Color1.blue + (bAvg * index));
-    return new Color(red, green, blue);
+  public scoreTest() {
+    const scoreColor = (colorArray: ColorArray): number => {
+      return colorArray.Colors
+        .map((color: Color, index: number): number => {
+          color.enabled = false;
+          if (index !== color.ordinal) {
+            color.incorrect = true;
+            color.message = `guess position: ${index} actual: ${color.ordinal}`;
+            return 0;
+          }
+
+          return 1;
+        })
+        .reduce((prev: number, curr: number) => prev + curr);
+    };
+
+    const s1 = scoreColor(this.colorArray1);
+    const s2 = scoreColor(this.colorArray2);
+    const s3 = scoreColor(this.colorArray3);
+    const s4 = scoreColor(this.colorArray4);
+
+    this.score = (s1 + s2 + s3 + s4) / (this.numElements * 4);
+    this.scoreVisible = true;
+  }
+
+  public reset() {
+    this.scoreVisible = false;
+    this.score = null;
+    this.randomizeColors();
+    const resetColor = (colorArray: ColorArray) => {
+      colorArray.Colors
+        .map((color: Color, index: number) => {
+          color.enabled = true;
+          color.incorrect = false;
+          color.message = null;
+        });
+    };
+
+    resetColor(this.colorArray1);
+    resetColor(this.colorArray2);
+    resetColor(this.colorArray3);
+    resetColor(this.colorArray4);
+  }
+
+  private randomizeColors(){
+    this.colorArray1.Colors = sampleSize(this.colorArray1.Colors, this.colorArray1.Colors.length);
+    this.colorArray2.Colors = sampleSize(this.colorArray2.Colors, this.colorArray2.Colors.length);
+    this.colorArray3.Colors = sampleSize(this.colorArray3.Colors, this.colorArray3.Colors.length);
+    this.colorArray4.Colors = sampleSize(this.colorArray4.Colors, this.colorArray4.Colors.length);
   }
 }
 
 class Color {
-  constructor(public red: number, public green: number, public blue: number) { }
+  public incorrect: boolean;
+
+  public enabled: boolean;
+
+  public message: string;
+
+  constructor(public ordinal: number, public red: number, public green: number, public blue: number) {
+    this.enabled = true;
+  }
 }
 
 class ColorArray {

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { DndModule } from 'ng2-dnd';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +24,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
         FormsModule,
         HttpModule,
         AppRoutingModule,
-        DndModule.forRoot()
+        DndModule.forRoot(),
+        NgbModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]

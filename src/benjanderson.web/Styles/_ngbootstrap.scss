@@ -1,0 +1,18 @@
+@import './_variables.scss';
+
+
+
+.popover {
+    background-color: $background !important;
+    border: 1px solid $light-grey !important;
+
+    .popover-content{
+        background-color: $background;
+    }   
+
+    .popover-title {
+        background-color: $background;
+        color: $foreground;
+        border-bottom: 1px solid $light-grey;
+    }
+}
