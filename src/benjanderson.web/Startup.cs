@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using benjanderson.web.Data;
 using System.IO;
+using System;
+using benjanderson.web.Services;
 
 namespace benjanderson.web
 {
@@ -16,15 +18,9 @@ namespace benjanderson.web
                var builder = new ConfigurationBuilder()
                    .SetBasePath(env.ContentRootPath)
                    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                   .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                   .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                   .AddEnvironmentVariables();
 
-               if (env.IsDevelopment())
-               {
-                    // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-                    builder.AddUserSecrets("aspnet-benjanderson.web-99e015c0-af28-4838-bce2-7202e3e33beb");
-               }
-
-               builder.AddEnvironmentVariables();
                Configuration = builder.Build();
           }
 
@@ -36,8 +32,12 @@ namespace benjanderson.web
                // Add framework services.
                services.AddDbContext<ApplicationDbContext>(options =>
                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+               
                services.AddMvc();
+               services.AddSingleton<MongoDatabase>((provider) =>
+               {
+                    return new MongoDatabase(this.Configuration.GetConnectionString("DefaultConnection"), this.Configuration.GetSection("MongoDatabaseName").Value);
+               });
           }
 
           // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --sourcemap --extractCss",
+    "start": "ng serve --sourcemap --extractCss --proxy-config proxy.conf.json",
     "build": "ng build",
     "release": "ng build -p --env=prod",
     "test": "ng test",

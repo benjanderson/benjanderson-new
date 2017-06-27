@@ -1,6 +1,10 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { sampleSize } from 'lodash';
 import { NgbPopoverWindow } from '@ng-bootstrap/ng-bootstrap/popover/popover';
+import { Http, RequestOptionsArgs } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Component({
   selector: 'app-color-test',
@@ -40,7 +44,13 @@ export class ColorTestComponent implements OnInit {
 
   public score: number;
 
-  constructor() { }
+  public clickCount = 0;
+
+  public age: number;
+
+  public gender = 'M';
+
+  constructor(private http: Http) { }
 
   ngOnInit() {
     const setColor = (index: number, array: ColorArray): Color => {
@@ -109,9 +119,19 @@ export class ColorTestComponent implements OnInit {
     this.scoreVisible = true;
   }
 
+  public submitScore() {
+    const score = { age: this.age, gender: this.gender, score: this.score, clicks: this.clickCount };
+    this.http
+      .post('/api/colortest/score', score)
+      .map((res) => res.json())
+      .catch(this.handleError)
+      .subscribe();
+  }
+
   public reset() {
     this.scoreVisible = false;
     this.score = null;
+    this.clickCount = 0;
     this.randomizeColors();
     const resetColor = (colorArray: ColorArray) => {
       colorArray.Colors
@@ -128,7 +148,25 @@ export class ColorTestComponent implements OnInit {
     resetColor(this.colorArray4);
   }
 
-  private randomizeColors(){
+  public countClick() {
+    this.clickCount++;
+  }
+
+  private handleError (error: Response | any) {
+    // In a real world app, you might use a remote logging infrastructure
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = (<any>body).error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
+
+  private randomizeColors() {
     this.colorArray1.Colors = sampleSize(this.colorArray1.Colors, this.colorArray1.Colors.length);
     this.colorArray2.Colors = sampleSize(this.colorArray2.Colors, this.colorArray2.Colors.length);
     this.colorArray3.Colors = sampleSize(this.colorArray3.Colors, this.colorArray3.Colors.length);
