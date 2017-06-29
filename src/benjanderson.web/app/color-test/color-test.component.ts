@@ -1,10 +1,11 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { sampleSize } from 'lodash';
 import { NgbPopoverWindow } from '@ng-bootstrap/ng-bootstrap/popover/popover';
-import { Http, RequestOptionsArgs } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Component({
   selector: 'app-color-test',
@@ -121,8 +122,10 @@ export class ColorTestComponent implements OnInit {
 
   public submitScore() {
     const score = { age: this.age, gender: this.gender, score: this.score, clicks: this.clickCount };
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
     this.http
-      .post('/api/colortest/score', score)
+      .post('/api/colortest/score', JSON.stringify(score), options)
       .map((res) => res.json())
       .catch(this.handleError)
       .subscribe();
