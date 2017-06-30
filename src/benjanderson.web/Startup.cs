@@ -32,11 +32,16 @@ namespace benjanderson.web
                // Add framework services.
                services.AddDbContext<ApplicationDbContext>(options =>
                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-               
+
                services.AddMvc();
-               services.AddSingleton<MongoDatabase>((provider) =>
+               services.AddScoped(typeof(MongoDBRepository<>));
+               services.AddSingleton<IConnectionStringFactory>((provider) =>
                {
-                    return new MongoDatabase(this.Configuration.GetConnectionString("DefaultConnection"), this.Configuration.GetSection("MongoDatabaseName").Value);
+                    return new LocalConnectionStringFactory
+                    {
+                         ConnectionString = this.Configuration.GetConnectionString("DefaultConnection"),
+                         Database = this.Configuration.GetSection("MongoDatabaseName").Value
+                    };
                });
           }
 
@@ -75,7 +80,7 @@ namespace benjanderson.web
                     // Rewrite request to use app root
                     if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
                     {
-                         context.Request.Path = "/index.html"; 
+                         context.Request.Path = "/index.html";
                          context.Response.StatusCode = 200; // Make sure we update the status code, otherwise it returns 404
                          await next();
                     }
@@ -83,6 +88,13 @@ namespace benjanderson.web
 
                // Serve wwwroot as root
                app.UseFileServer();
+          }
+
+          private class LocalConnectionStringFactory : IConnectionStringFactory
+          {
+               public string ConnectionString { get; set; }
+
+               public string Database { get; set; }
           }
      }
 }

@@ -1,6 +1,7 @@
 ﻿using benjanderson.web.Models;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using System;
 using System.Collections.Generic;
 using System.Security.Authentication;
 
@@ -8,19 +9,29 @@ namespace benjanderson.web.Services
 {
      public class MongoDBRepository<T> where T : BaseEntity
      {
-          public MongoDBRepository(string connectionString, string databaseName = null)
+          public MongoDBRepository(IConnectionStringFactory connectionStringFactory)
           {
-               MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(connectionString));
+               if (connectionStringFactory == null)
+               {
+                    throw new ArgumentNullException(nameof(connectionStringFactory));
+               }
+
+               if (string.IsNullOrWhiteSpace(connectionStringFactory.ConnectionString))
+               {
+                    throw new ArgumentException("connection string cannot be null");
+               }
+
+               MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(connectionStringFactory.ConnectionString));
                settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
 
                var client = new MongoClient(settings);
-               if (!string.IsNullOrWhiteSpace(databaseName))
+               if (!string.IsNullOrWhiteSpace(connectionStringFactory.Database))
                {
-                    _database = client.GetDatabase(databaseName);
+                    _database = client.GetDatabase(connectionStringFactory.Database);
                }
                else
                {
-                    databaseName = new MongoUrl(connectionString).DatabaseName;
+                    var databaseName = new MongoUrl(connectionStringFactory.ConnectionString).DatabaseName;
                     _database = client.GetDatabase(databaseName);
                }
                _collection = _database.GetCollection<T>(typeof(T).Name);
