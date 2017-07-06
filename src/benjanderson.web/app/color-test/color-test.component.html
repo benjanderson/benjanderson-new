@@ -94,6 +94,7 @@
                         <button class="btn btn-primary" type="submit" [disabled]="!colorForm.form.valid">Submit</button>
                     </fieldset>
                 </form>
+                <app-color-test-graph [hidden]="!graphVisible" [data]="data"></app-color-test-graph>
             </div>
         </div>
         <div class="side"></div>

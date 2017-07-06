@@ -1,18 +1,23 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { sampleSize } from 'lodash';
-import { NgbPopoverWindow } from '@ng-bootstrap/ng-bootstrap/popover/popover';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
+import { D3Service, D3, D3DragEvent, D3ZoomEvent, Selection } from 'd3-ng2-service';
+import { NgbPopoverWindow } from '@ng-bootstrap/ng-bootstrap/popover/popover';
+import { ColorScore } from '../color-test-graph/color-test-graph.component';
+
 @Component({
   selector: 'app-color-test',
   templateUrl: './color-test.component.html',
   styleUrls: ['./color-test.component.scss']
 })
-export class ColorTestComponent implements OnInit {
+export class ColorTestComponent implements OnInit, OnChanges, OnDestroy {
+
+
   @HostBinding('attr.myHilite') popover = new NgbPopoverWindow();
   private numElements = 13;
   public colorArray1: ColorArray = {
@@ -43,6 +48,8 @@ export class ColorTestComponent implements OnInit {
 
   public scoreVisible = false;
 
+  public graphVisible = false;
+
   public score: number;
 
   public clickCount = 0;
@@ -50,6 +57,8 @@ export class ColorTestComponent implements OnInit {
   public age: number;
 
   public gender = 'M';
+
+  public data: Array<ColorScore>;
 
   constructor(private http: Http) { }
 
@@ -79,6 +88,14 @@ export class ColorTestComponent implements OnInit {
     }
 
     this.randomizeColors();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    throw new Error('Method not implemented.');
+  }
+
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
   }
 
   public getStyle(color: Color) {
@@ -126,7 +143,11 @@ export class ColorTestComponent implements OnInit {
     const options = new RequestOptions({ headers: headers });
     this.http
       .post('/api/colortest/score', JSON.stringify(score), options)
-      .map((res) => res.json())
+      .map((res) => {
+        var json = res.json();
+        this.graphVisible = true;
+        this.data = json;
+      })
       .catch(this.handleError)
       .subscribe();
   }
@@ -155,7 +176,7 @@ export class ColorTestComponent implements OnInit {
     this.clickCount++;
   }
 
-  private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure
     let errMsg: string;
     if (error instanceof Response) {

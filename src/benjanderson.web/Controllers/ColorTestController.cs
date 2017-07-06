@@ -12,9 +12,9 @@ namespace benjanderson.web.Controllers
 {
      public class ColorTestController : Controller
      {
-          private MongoDatabase database;
+          private MongoDBRepository<ColorTestStats> database;
 
-          public ColorTestController(MongoDatabase database)
+          public ColorTestController(MongoDBRepository<ColorTestStats> database)
           {
                this.database = database;
           }
@@ -33,8 +33,16 @@ namespace benjanderson.web.Controllers
                     IpAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString()
                };
                
-               this.database.GetColorTestStats().Insert(stat);
-               return Ok();
+               this.database.Insert(stat);
+               var clientStats = this.database.Table
+                    .Where(dbStat => dbStat.Age >= 8 && dbStat.Age <= 80 && dbStat.Clicks >= 25 && dbStat.Score <= 100 && dbStat.Score >= 0)
+                    .Select(dbStat => new
+               {
+                    Score = dbStat.Score,
+                    Gender = dbStat.Gender,
+                    Age = dbStat.Age
+               });
+               return Ok(clientStats);
           }
     }
 
