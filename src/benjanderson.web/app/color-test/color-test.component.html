@@ -75,27 +75,27 @@
                     <span>compare with others by submitting your score</span>
                     <div class="form-group">
                         <label for="age">Age</label>
-                        <input type="number" class="form-control" [(ngModel)]="age" placeholder="Enter age" name="age" required>
+                        <input type="number" class="form-control" [(ngModel)]="age" placeholder="Enter age" name="age" required [disabled]="disableSubmit">
                     </div>
                     <fieldset class="form-group">
                         <label>Gender</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                            <input type="radio" class="form-check-input" [(ngModel)]="gender" value="M" name="male">
+                            <input type="radio" class="form-check-input" [(ngModel)]="gender" value="M" name="male" [disabled]="disableSubmit">
                                 Male
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                            <input type="radio" class="form-check-input" [(ngModel)]="gender" value="F" name="female">
+                            <input type="radio" class="form-check-input" [(ngModel)]="gender" value="F" name="female" [disabled]="disableSubmit">
                                 Female
                             </label>
                         </div>
-                        <button class="btn btn-primary" type="submit" [disabled]="!colorForm.form.valid">Submit</button>
+                        <button class="btn btn-primary" type="submit" [disabled]="!colorForm.form.valid || disableSubmit">Submit</button>
                     </fieldset>
                 </form>
-                <app-color-test-graph [hidden]="!graphVisible" [data]="data"></app-color-test-graph>
             </div>
+            <app-color-test-graph [hidden]="!graphVisible" [data]="data"></app-color-test-graph>
         </div>
         <div class="side"></div>
     </div>

@@ -44,11 +44,13 @@ export class ColorTestComponent implements OnInit, OnChanges, OnDestroy {
     Colors: []
   };
 
-  public helpVisible = false;
+  public helpVisible = true;
 
   public scoreVisible = false;
 
   public graphVisible = false;
+
+  public disableSubmit = false;
 
   public score: number;
 
@@ -138,6 +140,7 @@ export class ColorTestComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public submitScore() {
+    this.disableSubmit = true;
     const score = { age: this.age, gender: this.gender, score: this.score, clicks: this.clickCount };
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
@@ -154,6 +157,8 @@ export class ColorTestComponent implements OnInit, OnChanges, OnDestroy {
 
   public reset() {
     this.scoreVisible = false;
+    this.graphVisible = false;
+    this.disableSubmit = false;
     this.score = null;
     this.clickCount = 0;
     this.randomizeColors();
