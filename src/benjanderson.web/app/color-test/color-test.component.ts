@@ -145,7 +145,7 @@ export class ColorTestComponent implements OnInit, OnChanges, OnDestroy {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     this.http
-      .post('/api/colortest/score', JSON.stringify(score), options)
+      .post('/api/colortest', JSON.stringify(score), options)
       .map((res) => {
         var json = res.json();
         this.graphVisible = true;

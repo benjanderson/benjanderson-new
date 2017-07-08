@@ -20,7 +20,7 @@ namespace benjanderson.web.Controllers
           }
 
           [HttpPost]
-          [Route("api/colortest/score")]
+          [Route("api/colortest")]
           public IActionResult Score([FromBody] ColorTestRequest colorTestRequest)
           {
                var stat = new ColorTestStats
