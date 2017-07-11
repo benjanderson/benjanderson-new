@@ -8,6 +8,7 @@ using benjanderson.web.Data;
 using System.IO;
 using System;
 using benjanderson.web.Services;
+using benjanderson.web.Models;
 
 namespace benjanderson.web
 {
@@ -35,12 +36,13 @@ namespace benjanderson.web
 
                services.AddMvc();
                services.AddScoped(typeof(MongoDBRepository<>));
+               
                services.AddSingleton<IConnectionStringFactory>((provider) =>
                {
                     return new LocalConnectionStringFactory
                     {
                          ConnectionString = this.Configuration.GetConnectionString("DefaultConnection"),
-                         Database = this.Configuration.GetSection("MongoDatabaseName").Value
+                         Database = Configuration.GetValue<ApplicationSettings>("ApplicationSettings").MongoDatabaseName
                     };
                });
           }
