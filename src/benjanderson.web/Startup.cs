@@ -42,7 +42,7 @@ namespace benjanderson.web
                     return new LocalConnectionStringFactory
                     {
                          ConnectionString = this.Configuration.GetConnectionString("DefaultConnection"),
-                         Database = Configuration.GetValue<ApplicationSettings>("ApplicationSettings").MongoDatabaseName
+                         Database = this.Configuration.GetSection("MongoDatabaseName").Value
                     };
                });
           }
