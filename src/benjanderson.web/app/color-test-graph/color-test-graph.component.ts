@@ -38,7 +38,7 @@ export class ColorTestGraphComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.d3Svg.empty && !this.d3Svg.empty()) {
+    if (this.d3Svg && this.d3Svg.empty && !this.d3Svg.empty()) {
       this.d3Svg.selectAll('*').remove();
     }
   }

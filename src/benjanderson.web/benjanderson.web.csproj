@@ -9,8 +9,11 @@
   </PropertyGroup>
   <PropertyGroup>
     <UserSecretsId>aspnet-benjanderson.web-cb077653-b5a8-40cb-b4ce-e8603e6d6f14</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/d3856b74-e0b1-4442-b993-25ba6feb5edb/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/components/benjaminjanderson</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/d3856b74-e0b1-4442-b993-25ba6feb5edb/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/components/benjaminjanderson</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.NETCore.App" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
@@ -42,5 +45,8 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0-msbuild2-final" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.0-msbuild2-final" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild2-final" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 </Project>

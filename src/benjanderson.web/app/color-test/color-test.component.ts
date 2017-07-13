@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+﻿import { Component, OnInit, HostBinding, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { sampleSize } from 'lodash';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -9,15 +9,14 @@ import 'rxjs/add/observable/throw';
 import { D3Service, D3, D3DragEvent, D3ZoomEvent, Selection } from 'd3-ng2-service';
 import { NgbPopoverWindow } from '@ng-bootstrap/ng-bootstrap/popover/popover';
 import { ColorScore } from '../color-test-graph/color-test-graph.component';
+import { AppInsightsService } from "ng2-appinsights";
 
 @Component({
   selector: 'app-color-test',
   templateUrl: './color-test.component.html',
   styleUrls: ['./color-test.component.scss']
 })
-export class ColorTestComponent implements OnInit, OnChanges, OnDestroy {
-
-
+export class ColorTestComponent implements OnInit {
   @HostBinding('attr.myHilite') popover = new NgbPopoverWindow();
   private numElements = 13;
   public colorArray1: ColorArray = {
@@ -62,7 +61,7 @@ export class ColorTestComponent implements OnInit, OnChanges, OnDestroy {
 
   public data: Array<ColorScore>;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private appinsightsService: AppInsightsService) { }
 
   ngOnInit() {
     const setColor = (index: number, array: ColorArray): Color => {
@@ -90,14 +89,6 @@ export class ColorTestComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     this.randomizeColors();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
-  }
-
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
   }
 
   public getStyle(color: Color) {
@@ -147,7 +138,7 @@ export class ColorTestComponent implements OnInit, OnChanges, OnDestroy {
     this.http
       .post('/api/colortest', JSON.stringify(score), options)
       .map((res) => {
-        var json = res.json();
+        const json = res.json();
         this.graphVisible = true;
         this.data = json;
       })
@@ -160,6 +151,7 @@ export class ColorTestComponent implements OnInit, OnChanges, OnDestroy {
     this.graphVisible = false;
     this.disableSubmit = false;
     this.score = null;
+    this.age = null;
     this.clickCount = 0;
     this.randomizeColors();
     const resetColor = (colorArray: ColorArray) => {
@@ -182,16 +174,18 @@ export class ColorTestComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private handleError(error: Response | any) {
-    // In a real world app, you might use a remote logging infrastructure
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';
       const err = (<any>body).error || JSON.stringify(body);
       errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+      this.appinsightsService.trackException(new Error(errMsg));
     } else {
       errMsg = error.message ? error.message : error.toString();
+      this.appinsightsService.trackException(error);
     }
     console.error(errMsg);
+    alert('something went horribly wrong, please try again later');
     return Observable.throw(errMsg);
   }
 

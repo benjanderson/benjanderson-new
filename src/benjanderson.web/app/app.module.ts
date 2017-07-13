@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { DndModule } from 'ng2-dnd';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { D3Service } from 'd3-ng2-service';
+import { AppInsightsModule } from 'ng2-appinsights';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +29,8 @@ import { ColorTestGraphComponent } from './color-test-graph/color-test-graph.com
         HttpModule,
         AppRoutingModule,
         DndModule.forRoot(),
-        NgbModule.forRoot()
+        NgbModule.forRoot(),
+        AppInsightsModule
     ],
     providers: [D3Service],
     bootstrap: [AppComponent]
