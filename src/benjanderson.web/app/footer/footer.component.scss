@@ -1,0 +1,52 @@
+@import './../../Styles/_variables.scss';
+
+:host {
+  text-align: center;
+  text-shadow: none;
+  color: $light-grey;
+  display: block;
+  
+  a{
+    color: $light-grey;
+    margin: .2em;
+  }
+
+  .fa-main {
+    color: $background;
+  }
+
+  .facebook:hover,.facebook:active{
+    color: rgb(59, 89, 152);
+    .fa-main {
+      color: $white;
+    }
+  }
+
+  .github:hover,.github:active{
+    color: $black;
+    .fa-main {
+      color: $white;
+    }
+  }
+
+  .stack-overflow:hover,.stack-overflow:active{
+    color: $white;
+    .fa-main {
+      color: rgb(244, 128, 36);
+    }
+  }
+
+  .linked-in:hover,.linked-in:active{
+    color: rgb(1, 119, 181);
+    .fa-main {
+      color: $white;
+    }
+  }
+
+  .medium:hover,.medium:active{
+    color: $white;
+    .fa-main {
+      color: rgb(11, 227, 112);
+    }
+  }
+}
