@@ -66,6 +66,7 @@ namespace benjanderson.web.Services
                metaTags["og:title"] = title;
                metaTags["twitter:image:alt"] = metaTags["og:image"] = metaTags["thumbnail"] = image;
                metaTags["og:description"] = metaTags["description"] = description;
+               metaTags["twitter:card"] = string.IsNullOrWhiteSpace(image) ? "summary" : "summary_large_image";
 
                var tagText = metaTags
                     .Where(tag => !string.IsNullOrWhiteSpace(tag.Value))
