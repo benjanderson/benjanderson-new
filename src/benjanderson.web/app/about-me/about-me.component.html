@@ -1,3 +1,17 @@
-<p>
-  under construction
-</p>
+<h2 class="page-header">Professional timeline</h2>
+<section id="cd-timeline" class="cd-container">
+  <div class="circle">
+  </div>
+  <div class="date">{{ currentYear }}</div>
+  <div class="cd-timeline-block" *ngFor="let item of history">
+    <div class="cd-timeline-img cd-picture">
+      <img [src]="item.icon" alt="Picture">
+    </div>
+    <div class="cd-timeline-content">
+      <h2>{{item.title}}</h2>
+      <h3>{{item.subtitle}}</h3>
+      <p>{{item.description}}</p>
+      <span class="cd-date">{{item.date}}</span>
+    </div>
+  </div>
+</section>
