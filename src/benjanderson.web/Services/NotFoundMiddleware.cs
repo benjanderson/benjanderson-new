@@ -26,7 +26,8 @@ namespace benjanderson.web.Services
                if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
                {
                     var html = spaResponse.GetResponse(context.Request, context.Response);
-                    context.Response.StatusCode = 200; 
+                    context.Response.StatusCode = 200;
+                    context.Response.ContentType = "text/html";
                     await context.Response.WriteAsync(html);
                }
           }
