@@ -4,27 +4,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
+using benjanderson.web.Services;
 
 namespace benjanderson.web.Controllers
 {
      public class HomeController : Controller
      {
-          private IHostingEnvironment hostingEviroment;
+          private IHostingEnvironment hostingEnvironment;
 
-          public HomeController(IHostingEnvironment hostingEnvironment)
+          private SpaResponse spaResponse;
+
+          public HomeController(SpaResponse spaResponse)
           {
-               this.hostingEviroment = hostingEnvironment;
+               this.spaResponse = spaResponse;
           }
 
           [Route("/")]
           public IActionResult Index()
           {
-               if (!System.IO.File.Exists(System.IO.Path.Combine(this.hostingEviroment.ContentRootPath, "wwwroot", "index.html")))
-               {
-                    return this.NotFound("index.html not found");
-               }
-
-               return File("~/index.html", "text/html");
+               var html = this.spaResponse.GetResponse(this.Request, this.Response);
+               
+               return Content(html, "text/html");
           }
      }
 }

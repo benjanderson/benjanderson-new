@@ -4,11 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using benjanderson.web.Data;
 using System.IO;
 using System;
 using benjanderson.web.Services;
 using benjanderson.web.Models;
+using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace benjanderson.web
 {
@@ -30,13 +31,9 @@ namespace benjanderson.web
           // This method gets called by the runtime. Use this method to add services to the container.
           public void ConfigureServices(IServiceCollection services)
           {
-               // Add framework services.
-               services.AddDbContext<ApplicationDbContext>(options =>
-                   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
                services.AddMvc();
                services.AddScoped(typeof(MongoDBRepository<>));
-               
+               services.AddSingleton<SpaResponse>();
                services.AddSingleton<IConnectionStringFactory>((provider) =>
                {
                     return new LocalConnectionStringFactory
@@ -74,19 +71,7 @@ namespace benjanderson.web
                     routes.MapRoute("default", "{controller}/{action=Index}");
                });
 
-               app.Use(async (context, next) =>
-               {
-                    await next();
-
-                    // If there's no available file and the request doesn't contain an extension, we're probably trying to access a page.
-                    // Rewrite request to use app root
-                    if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
-                    {
-                         context.Request.Path = "/index.html";
-                         context.Response.StatusCode = 200; // Make sure we update the status code, otherwise it returns 404
-                         await next();
-                    }
-               });
+               app.UseMiddleware<NotFoundMiddleware>();
 
                // Serve wwwroot as root
                app.UseFileServer();
