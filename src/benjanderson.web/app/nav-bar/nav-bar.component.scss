@@ -4,11 +4,14 @@
  * Header
  */
 
- :host{
-   float:right;
- }
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 15px;
+}
 
-.masthead {
+.masthead {  
+  
   margin-bottom: 2rem;
 }
 

@@ -1,26 +1,13 @@
 @import './_variables.scss';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 
 .theme-nature {
-  &.wrapper {
-    @include desktop{
-      background: url("http://files.benjaminjanderson.com/benjaminjandersonblob/wyoming-mountains.jpg") no-repeat center center fixed;
-      background-size: cover;
-    }
-    @include tablet{
-      background: url("http://files.benjaminjanderson.com/benjaminjandersonblob/wyoming-mountains.jpg") no-repeat center center fixed;
-      background-size: cover;
-    }
-    @include phone{
-      // no background to save data
-    }
-  }
+      @include media-breakpoint-up(md) { 
+        background: url("http://files.benjaminjanderson.com/benjaminjandersonblob/wyoming-mountains.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
 
-  .inner {
-    background-color: rgba($background, .7);
-  } 
-
-  .side {
-    opacity: 0;
-    background-color: transparent;
-  }
+     .container {
+        background-color: rgba($background, .7);
+    }
 }

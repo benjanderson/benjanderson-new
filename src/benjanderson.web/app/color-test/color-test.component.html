@@ -69,15 +69,15 @@
             <label>Gender</label>
             <div class="form-check">
                 <label class="form-check-label">
-                            <input type="radio" class="form-check-input" [(ngModel)]="gender" value="M" name="male" [disabled]="disableSubmit">
-                                Male
-                            </label>
+                                <input type="radio" class="form-check-input" [(ngModel)]="gender" value="M" name="male" [disabled]="disableSubmit">
+                                    Male
+                                </label>
             </div>
             <div class="form-check">
                 <label class="form-check-label">
-                            <input type="radio" class="form-check-input" [(ngModel)]="gender" value="F" name="female" [disabled]="disableSubmit">
-                                Female
-                            </label>
+                                <input type="radio" class="form-check-input" [(ngModel)]="gender" value="F" name="female" [disabled]="disableSubmit">
+                                    Female
+                                </label>
             </div>
             <button class="btn btn-primary" type="submit" [disabled]="!colorForm.form.valid || disableSubmit">Submit</button>
         </fieldset>

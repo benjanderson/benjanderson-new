@@ -1,23 +1,5 @@
-<div class="wrapper" [ngClass]="theme">
-    <div class="header">
-        <div class="side"></div>
-        <div class="inner">
-            <app-nav-bar></app-nav-bar>
-        </div>
-        <div class="side"></div>
-    </div>
-    <div class="main">
-        <div class="side"></div>
-        <div class="inner">
-            <router-outlet></router-outlet>
-        </div>
-        <div class="side"></div>
-    </div>
-    <div class="footer" *ngIf="showFooter">
-        <div class="side"></div>
-        <div class="inner">
-            <app-footer></app-footer>
-        </div>
-        <div class="side"></div>
-    </div>
+<app-nav-bar></app-nav-bar>
+<div id="content" class="container">
+    <router-outlet></router-outlet>
 </div>
+<footer *ngIf="showFooter"></footer>
