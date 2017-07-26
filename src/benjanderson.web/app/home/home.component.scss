@@ -3,15 +3,17 @@
 
 :host{
   text-align: center; 
+  height: 100%;
 }
 
 #home-content {
+  height: 100%;
    @include media-breakpoint-up(md) {
-    margin-top: 50px;
+    padding-top: 50px;
   }
 
   @include media-breakpoint-up(lg) {
-    margin-top: 100px;
+    padding-top: 100px;
   }
 }
 

@@ -9,7 +9,7 @@ import 'rxjs/add/observable/throw';
 import { D3Service, D3, D3DragEvent, D3ZoomEvent, Selection } from 'd3-ng2-service';
 import { NgbPopoverWindow } from '@ng-bootstrap/ng-bootstrap/popover/popover';
 import { ColorScore } from '../color-test-graph/color-test-graph.component';
-import { AppInsightsService } from "ng2-appinsights";
+import { AppInsightsService } from 'ng2-appinsights';
 
 @Component({
   selector: 'app-color-test',

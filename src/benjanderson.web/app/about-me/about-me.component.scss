@@ -15,8 +15,25 @@ $color-3: $white;
 $color-4: darken($lime, 20); 
 $color-5: darken($yellow, 20);  
 
-:host{
-    color: $light-grey;
+
+
+
+.container {
+	// add top and bottom padding to every section
+	padding-top: 90px;
+	padding-bottom: 90px;
+}
+
+.jumbotron {
+	background-color: #666;
+}
+
+.blockquote-footer {
+    color: $white
+}
+
+hr {
+	background-color: #e9f0f5;
 }
 
 // mixins - rem fallback - credits: http://zerosixthree.se/
@@ -69,25 +86,6 @@ $L:     1170px;
 
 /* -------------------------------- 
 
-Primary style
-
--------------------------------- */
-
-a {
-	color: $link;
-	text-decoration: none;
-}
-
-img {
-	max-width: 100%;
-}
-
-h1, h2 {
-    font-weight: bold;
-}
-
-/* -------------------------------- 
-
 Modules - reusable parts of our design
 
 -------------------------------- */
@@ -109,6 +107,7 @@ Modules - reusable parts of our design
 }
 
 #cd-timeline {
+	color: $light-grey;
 	position: relative;
 	padding: 2em 0;
 	margin: {
@@ -231,20 +230,7 @@ Modules - reusable parts of our design
 		width: 60px;
 		height: 60px;
 		left: 50%;
-		margin-left: -30px;
-
-		/* Force Hardware Acceleration in WebKit */
-		-webkit-transform: translateZ(0);
-		-webkit-backface-visibility: hidden;
-
-		// .cssanimations &.is-hidden {
-		// 	visibility: hidden;
-		// }
-
-		// .cssanimations &.bounce-in {
-		// 	visibility: visible;
-		// 	@include animation(cd-bounce-1 .6s);
-		// }
+		margin-left: -30px;		
 	}
 }
 
@@ -272,11 +258,7 @@ Modules - reusable parts of our design
 	p {
 		margin: 1em 0;
 		line-height: 1.6;
-    }
-    
-    ::selection {
-        background: $yellow;
-    }
+    }    
 
 	.cd-read-more {
 		float: right;

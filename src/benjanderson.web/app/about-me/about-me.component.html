@@ -1,17 +1,65 @@
-<h2 class="page-header">Professional timeline</h2>
-<section id="cd-timeline" class="cd-container">
-  <div class="circle">
-  </div>
-  <div class="date">{{ currentYear }}</div>
-  <div class="cd-timeline-block" *ngFor="let item of history">
-    <div class="cd-timeline-img cd-picture">
-      <img [src]="item.icon" alt="Picture">
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-4">Experienced web developer, something catchy blah blah blah...</h1>
+    <hr class="my-4">
+    <p class="lead">My name is Ben Anderson and I currently work as a Senior Sofware Engineer at Health Catalyst. 
+      I am Proficient at ASP.net MVC/Web forms, JavaScript, CSS, Web services, and data management through SQL Server. </p>
+  </div> 
+</div>
+<div class="container">
+  <h2 class="page-header">Skills & Expertise</h2>
+  <p class="text-center lead">I make a point to explore and learn something new with every project I work on. </p>
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Backend development</h3>
+      <p>c#, asp.net/asp.net core, Entity Framework, sql server, mongo db</p>
     </div>
-    <div class="cd-timeline-content">
-      <h2>{{item.title}}</h2>
-      <h3>{{item.subtitle}}</h3>
-      <p>{{item.description}}</p>
-      <span class="cd-date">{{item.date}}</span>
+    <div class="col-md-4">
+      <h3>Frontend Development</h3>
+      <p>started with jquery and knockout moving onto angularjs / angular have dabbled in react</p>
+    </div>
+    <div class="col-md-4">
+      <h3>Project Managment</h3>
+      <p>team lead of 5 to ship idea. software architect at eFORCE</p>
     </div>
   </div>
-</section>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <blockquote class="blockquote">
+      <p class="mb-0 display-4">Ben is an excellent web developer, and has a real talent for designing software systems. If I ever needed something
+        done, I knew Ben could figure it out, and implement it efficiently. He is very focused on the customer, and worked
+        well with me and his team members.</p>
+      <footer class="blockquote-footer">Max Barfuss, former Development manager at eFORCE</footer>
+    </blockquote>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="page-header">Professional timeline</h2>
+  <section id="cd-timeline" class="cd-container">
+    <div class="circle">
+    </div>
+    <div class="date">{{ currentYear }}</div>
+    <div class="cd-timeline-block" *ngFor="let item of history">
+      <div class="cd-timeline-img cd-picture">
+        <img [src]="item.icon" alt="Picture">
+      </div>
+      <div class="cd-timeline-content">
+        <h2>{{item.title}}</h2>
+        <h3>{{item.subtitle}}</h3>
+        <p>{{item.description}}</p>
+        <span class="cd-date">{{item.date}}</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+      <h1 class="display-4">Download Resumé</h1>
+      <p class="lead">Here is a hard copy of my resumé</p>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Download</a>
+  </div>
+</div>

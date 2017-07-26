@@ -3,19 +3,23 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { AppInsightsService } from 'ng2-appinsights';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { routerTransition } from './router.animations';
 
 @Component({
-    selector: 'body',
+    selector: 'app-main',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
+    animations: [routerTransition]
 })
 export class AppComponent implements OnInit {
     public showFooter = true;
 
-    @HostBinding('attr.class') theme: string;
-
     constructor(private appinsightsService: AppInsightsService, private router: Router) {
+    }
+
+    public getState(outlet): string {
+        return outlet.activatedRouteData.state;
     }
 
     public ngOnInit(): void {
@@ -28,16 +32,12 @@ export class AppComponent implements OnInit {
                 this.appinsightsService.trackPageView(event.url);
                 switch (event.url) {
                     case '/':
-                        this.showFooter = true;
-                        this.theme = 'theme-nature';
-                        break;
                     case '/about-me':
                         this.showFooter = true;
-                        this.theme = null;
                         break;
                     default:
                         this.showFooter = false;
-                        this.theme = null;
+                        break;
                 }
             }
         }).subscribe();

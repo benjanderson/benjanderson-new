@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DndModule } from 'ng2-dnd';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -34,7 +35,8 @@ import { FooterComponent } from './footer/footer.component';
         AppRoutingModule,
         DndModule.forRoot(),
         NgbModule.forRoot(),
-        AppInsightsModule
+        AppInsightsModule,
+        BrowserAnimationsModule
     ],
     providers: [D3Service],
     bootstrap: [AppComponent]

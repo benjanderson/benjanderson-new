@@ -1,86 +1,89 @@
-<h1>Color IQ Test</h1>
-<div [hidden]="!helpVisible">
-    <p>
-        Are you among the 1 in 255 women and 1 in 12 men who have some form of color vision deficiency? If you work in a field where
-        color is important, or you’re just curious about your color IQ, take our online challenge to find out. Based on the
-        Farnsworth Munsell 100 Hue Test, this online challenge is a fun, quick way to understand your color vision acuity.
-    </p>
-    <h4><i class="icon-info-sign"></i>How to play</h4>
-    <ol>
-        <li>The first and last color are fixed</li>
-        <li>Drag and drop the colors in each row to arrange them by hue order</li>
-        <li>Click "Score My Test" after sorting all 4 lists</li>
-    </ol>
-    <p>
-        <a href="http://www.xrite.com/hue-test?pageid=77#sthash.S0BzXpl9.dpuf">See this site for the orignal</a>
-    </p>
-    <img class="img-fluid" src="http://files.benjaminjanderson.com/benjaminjandersonblob/color-picker-help.gif" />
-    <button (click)="hideHelp()" class="btn btn-primary">Lets go!</button>
-</div>
-<div [hidden]="helpVisible">
-    <p>
-        Good luck! Remember to Drag and drop the colors in each row to arrange them by hue order
-    </p>
-    <ul class="sortable" dnd-sortable-container [sortableData]="colorArray1.Colors" [dropZones]="['1']">
-        <li [ngStyle]="getStyle(colorArray1.Color1)"></li>
-        <li *ngFor="let color of colorArray1.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
-            draggable="true" [ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled" (onDragStart)="countClick()">
-            <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div>
-        </li>
-        <li [ngStyle]="getStyle(colorArray1.Color2)"></li>
-    </ul>
-    <ul class="sortable" dnd-sortable-container [sortableData]="colorArray2.Colors" [dropZones]="['2']">
-        <li [ngStyle]="getStyle(colorArray2.Color1)"></li>
-        <li *ngFor="let color of colorArray2.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
-            draggable="true" [ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled" (onDragStart)="countClick()">
-            <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div>
-        </li>
-        <li [ngStyle]="getStyle(colorArray2.Color2)"></li>
-    </ul>
-    <ul class="sortable" dnd-sortable-container [sortableData]="colorArray3.Colors" [dropZones]="['3']">
-        <li [ngStyle]="getStyle(colorArray3.Color1)"></li>
-        <li *ngFor="let color of colorArray3.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
-            draggable="true" [ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled" (onDragStart)="countClick()">
-            <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div>
-        </li>
-        <li [ngStyle]="getStyle(colorArray3.Color2)"></li>
-    </ul>
-    <ul class="sortable" dnd-sortable-container [sortableData]="colorArray4.Colors" [dropZones]="['4']">
-        <li [ngStyle]="getStyle(colorArray4.Color1)"></li>
-        <li *ngFor="let color of colorArray4.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
-            draggable="true" [ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled" (onDragStart)="countClick()">
-            <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div>
-        </li>
-        <li [ngStyle]="getStyle(colorArray4.Color2)"></li>
-    </ul>
-    <button (click)="scoreTest()" [hidden]="scoreVisible" class="btn btn-primary">Score My Test</button>
-    <button (click)="reset()" [hidden]="!scoreVisible" class="btn btn-secondary">Reset</button>
-    <button (click)="showHelp()" class="btn btn-link">Go back</button>
-</div>
-<div [hidden]="!scoreVisible">
-    <span class='large-text'>You Scored {{score | percent}}</span>
-    <form (ngSubmit)="submitScore()" #colorForm="ngForm">
-        <span>compare with others by submitting your score</span>
-        <div class="form-group">
-            <label for="age">Age</label>
-            <input type="number" class="form-control" [(ngModel)]="age" placeholder="Enter age" name="age" required [disabled]="disableSubmit">
-        </div>
-        <fieldset class="form-group">
-            <label>Gender</label>
-            <div class="form-check">
-                <label class="form-check-label">
+<div class="container">
+    <h1>Color IQ Test</h1>
+    <div [hidden]="!helpVisible">
+        <p>
+            Are you among the 1 in 255 women and 1 in 12 men who have some form of color vision deficiency? If you work in a field where
+            color is important, or you’re just curious about your color IQ, take our online challenge to find out. Based
+            on the Farnsworth Munsell 100 Hue Test, this online challenge is a fun, quick way to understand your color vision
+            acuity.
+        </p>
+        <h4><i class="icon-info-sign"></i>How to play</h4>
+        <ol>
+            <li>The first and last color are fixed</li>
+            <li>Drag and drop the colors in each row to arrange them by hue order</li>
+            <li>Click "Score My Test" after sorting all 4 lists</li>
+        </ol>
+        <p>
+            <a href="http://www.xrite.com/hue-test?pageid=77#sthash.S0BzXpl9.dpuf">See this site for the orignal</a>
+        </p>
+        <img class="img-fluid" src="http://files.benjaminjanderson.com/benjaminjandersonblob/color-picker-help.gif" />
+        <button (click)="hideHelp()" class="btn btn-primary">Lets go!</button>
+    </div>
+    <div [hidden]="helpVisible">
+        <p>
+            Good luck! Remember to Drag and drop the colors in each row to arrange them by hue order
+        </p>
+        <ul class="sortable" dnd-sortable-container [sortableData]="colorArray1.Colors" [dropZones]="['1']">
+            <li [ngStyle]="getStyle(colorArray1.Color1)"></li>
+            <li *ngFor="let color of colorArray1.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
+                draggable="true" [ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled" (onDragStart)="countClick()">
+                <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div>
+            </li>
+            <li [ngStyle]="getStyle(colorArray1.Color2)"></li>
+        </ul>
+        <ul class="sortable" dnd-sortable-container [sortableData]="colorArray2.Colors" [dropZones]="['2']">
+            <li [ngStyle]="getStyle(colorArray2.Color1)"></li>
+            <li *ngFor="let color of colorArray2.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
+                draggable="true" [ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled" (onDragStart)="countClick()">
+                <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div>
+            </li>
+            <li [ngStyle]="getStyle(colorArray2.Color2)"></li>
+        </ul>
+        <ul class="sortable" dnd-sortable-container [sortableData]="colorArray3.Colors" [dropZones]="['3']">
+            <li [ngStyle]="getStyle(colorArray3.Color1)"></li>
+            <li *ngFor="let color of colorArray3.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
+                draggable="true" [ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled" (onDragStart)="countClick()">
+                <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div>
+            </li>
+            <li [ngStyle]="getStyle(colorArray3.Color2)"></li>
+        </ul>
+        <ul class="sortable" dnd-sortable-container [sortableData]="colorArray4.Colors" [dropZones]="['4']">
+            <li [ngStyle]="getStyle(colorArray4.Color1)"></li>
+            <li *ngFor="let color of colorArray4.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
+                draggable="true" [ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled" (onDragStart)="countClick()">
+                <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div>
+            </li>
+            <li [ngStyle]="getStyle(colorArray4.Color2)"></li>
+        </ul>
+        <button (click)="scoreTest()" [hidden]="scoreVisible" class="btn btn-primary">Score My Test</button>
+        <button (click)="reset()" [hidden]="!scoreVisible" class="btn btn-secondary">Reset</button>
+        <button (click)="showHelp()" class="btn btn-link">Go back</button>
+    </div>
+    <div [hidden]="!scoreVisible">
+        <span class='large-text'>You Scored {{score | percent}}</span>
+        <form (ngSubmit)="submitScore()" #colorForm="ngForm">
+            <span>compare with others by submitting your score</span>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" class="form-control" [(ngModel)]="age" placeholder="Enter age" name="age" required [disabled]="disableSubmit">
+            </div>
+            <fieldset class="form-group">
+                <label>Gender</label>
+                <div class="form-check">
+                    <label class="form-check-label">
                                 <input type="radio" class="form-check-input" [(ngModel)]="gender" value="M" name="male" [disabled]="disableSubmit">
                                     Male
                                 </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
                                 <input type="radio" class="form-check-input" [(ngModel)]="gender" value="F" name="female" [disabled]="disableSubmit">
                                     Female
                                 </label>
-            </div>
-            <button class="btn btn-primary" type="submit" [disabled]="!colorForm.form.valid || disableSubmit">Submit</button>
-        </fieldset>
-    </form>
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]="!colorForm.form.valid || disableSubmit">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+    <app-color-test-graph [hidden]="!graphVisible" [data]="data"></app-color-test-graph>
 </div>
-<app-color-test-graph [hidden]="!graphVisible" [data]="data"></app-color-test-graph>
