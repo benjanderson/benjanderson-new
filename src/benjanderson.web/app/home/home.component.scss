@@ -33,7 +33,7 @@
 }
 
 #me {
-  color:$accent1;
+  color:$accent;
 }
 
 // cursor
@@ -59,8 +59,8 @@
   background-color: $black;
   color: #FAFAFA;
   background-image: url(http://files.benjaminjanderson.com/benjaminjandersonblob/shattered.png);
-  border-bottom: 10px solid $primary;
-  border-top: 10px solid $primary;
+  // border-bottom: 10px solid $primary;
+  // border-top: 10px solid $primary;
   border-radius: 0;
 }
 
