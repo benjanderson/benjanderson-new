@@ -8,6 +8,7 @@
 
 #home-content {
   height: 100%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
    @include media-breakpoint-up(md) {
     padding-top: 50px;
   }
@@ -16,21 +17,6 @@
     padding-top: 100px;
   }
 }
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
- .cover-heading, .lead{
-    animation: fadein 3s;
-  }
-
 
 .lead {
   @include media-breakpoint-up(sm) {
@@ -47,5 +33,34 @@
 }
 
 #me {
-  color:$accent;
+  color:$accent1;
 }
+
+// cursor
+
+.blinking-cursor {
+  font-weight: 400;
+  font-size: 2.5rem;
+  letter-spacing: -3px;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: $white;
+  }
+}
+
+// jumbotron
+.jumbotron{
+  background-color: $black;
+  color: #FAFAFA;
+  background-image: url(http://files.benjaminjanderson.com/benjaminjandersonblob/shattered.png);
+  border-bottom: 10px solid $primary;
+  border-top: 10px solid $primary;
+  border-radius: 0;
+}
+
