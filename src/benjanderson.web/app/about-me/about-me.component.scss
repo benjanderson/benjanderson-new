@@ -5,18 +5,19 @@
 @import './../../Styles/_variables.scss';
 
 // variables - colors
-$main-text: #7f8c97; // main text
+$primary-text: $black; 
+$secondary-text: lighten($black, 25); 
 $link: #acb7c0; // anchor tags
-$background: #e9f0f5; // body background color
 
-$color-1: $black; 
-$color-2: darken($red, 20); 
-$color-3: $white; 
-$color-4: darken($lime, 20); 
-$color-5: darken($yellow, 20);  
+$change-me:  darken($lime, 20); 
 
 
-
+//Monochromatic - https://color.adobe.com/create/color-wheel/?base=2&rule=Monochromatic&selected=0&name=My%20Color%20Theme&mode=rgb&rgbvalues=0.3588235294117647,0.8999999999999999,0.658823529411663,0.46579520697167753,0.6666666666666666,0.5771478639764707,0.23921568627450981,0.6,0.4392156862745098,0.6288235294117646,0.8999999999999999,0.7791496163682354,0.15947712418300652,0.39999999999999997,0.29281045751629464&swatchOrder=0,1,2,3,4
+$color1: #3D9970;
+$color2: #77AA93;
+$color3: #29664B;
+$color4: #A0E5C7;
+$color5: #5BE5A8;  
 
 .container {
 	// add top and bottom padding to every section
@@ -25,15 +26,26 @@ $color-5: darken($yellow, 20);
 }
 
 .jumbotron {
-	background-color: #666;
+	&.one {
+		background-color: $color2;
+	}
+	&.two {
+		background-color: $color3;
+	}
+	&.three {
+		background-color: $color4;
+		margin-bottom: 0;
+		color: $foreground;
+	}
+	color: $white;
 }
 
 .blockquote-footer {
-    color: $white
+    color: $white;
 }
 
 hr {
-	background-color: #e9f0f5;
+	background-color: $color1;
 }
 
 // mixins - rem fallback - credits: http://zerosixthree.se/
@@ -61,7 +73,7 @@ hr {
 
 // mixins - border radius
 
-@mixin border-radius($radius:.25em) {
+@mixin border-radius($radius:.5em) {
   border-radius: $radius;
 }
 
@@ -107,7 +119,7 @@ Modules - reusable parts of our design
 }
 
 #cd-timeline {
-	color: $light-grey;
+	color: $secondary-text;
 	position: relative;
 	padding: 2em 0;
 	margin: {
@@ -123,7 +135,7 @@ Modules - reusable parts of our design
 		left: 18px;
 		height: 100%;
 		width: 4px;
-		background: darken($background, 5%);
+		background: $gray;
     }
     
     .circle {
@@ -131,7 +143,7 @@ Modules - reusable parts of our design
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        background-color: darken($background, 5%);
+        background-color: $gray;
         top: -5px;
         left: 5px;
         
@@ -201,7 +213,7 @@ Modules - reusable parts of our design
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	box-shadow: 0 0 0 4px $color-3, inset 0 2px 0 rgba(#000, .08), 0 3px 0 4px rgba(#000, .05) ;
+	box-shadow: 0 0 0 4px $gray, inset 0 2px 0 rgba(#000, .08), 0 3px 0 4px rgba(#000, .05) ;
 
 	img {
 		display: block;
@@ -214,16 +226,8 @@ Modules - reusable parts of our design
 		margin-top: -12px;
 	}
 
-	&.cd-picture {
-		background: $color-4;
-	}
-
-	&.cd-movie {
-		background: $color-2;
-	}
-
-	&.cd-location {
-		background: $color-5;
+	&.cd-icon {
+		background: $change-me;
 	}
 
 	@include MQ(L) {
@@ -237,14 +241,15 @@ Modules - reusable parts of our design
 
 .cd-timeline-content {
 	margin-left: 60px;
-	background: $color-3;
+	background: $background;
 	@include border-radius;
 	padding: 1em;
-	box-shadow: 0 3px 0 darken($background, 5%);
+	border: 1px solid $gray;
+	box-shadow: 0 3px 0 darken($background, 25%);
 	@include clearfix;
 
 	h2 {
-		color: $color-1;
+		color: $primary-text;
 	}
 
 	p, .cd-read-more, .cd-date {
@@ -264,7 +269,7 @@ Modules - reusable parts of our design
 		float: right;
 		padding: .8em 1em;
 		background: $link;
-		color: $color-3;
+		color: $color3;
 		@include border-radius;
 
 		.no-touch &:hover {
@@ -286,7 +291,7 @@ Modules - reusable parts of our design
 		height: 0;
 		width: 0;
 		border: 7px solid transparent;
-		border-right: 7px solid $color-3;
+		border-right: 7px solid $gray;
 	}
 
 	@include MQ(M) {
@@ -319,7 +324,7 @@ Modules - reusable parts of our design
 			top: 24px;
 			left: 43%;
 			border-color: transparent;
-			border-left-color: $color-3;
+			border-left-color: $gray;
 		}
 
 		.cd-read-more {
@@ -342,7 +347,7 @@ Modules - reusable parts of our design
 				left: auto;
 				right: 43%;
 				border-color: transparent;
-				border-right-color: $color-3;
+				border-right-color: $gray;
 			}
 
 			.cd-read-more {

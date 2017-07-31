@@ -12,7 +12,7 @@
   }
 
   .fa-main {
-    color: $background;
+    color: $foreground;
   }
 
   .facebook:hover,.facebook:active{
@@ -44,9 +44,9 @@
   }
 
   .medium:hover,.medium:active{
-    color: $white;
+    color: rgb(11, 227, 112);
     .fa-main {
-      color: rgb(11, 227, 112);
+      color: $white;  
     }
   }
 }

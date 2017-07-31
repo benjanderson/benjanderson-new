@@ -6,8 +6,8 @@
 html,
 body {
    height: 100%;
-  background-color: $background;
-  color: $white;
+   background-color: $background;
+   color: $foreground;
 
   ::selection {
         background: $yellow;

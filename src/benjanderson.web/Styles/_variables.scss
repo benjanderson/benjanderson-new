@@ -20,11 +20,11 @@ $maroon:  #85144B;
 $white:  #FFFFFF;
 $silver: #DDDDDD;
 $gray:   #AAAAAA;
-$black:  #111111;
+$black:  #222222;
 
 // colors
-$background: #444;
-$foreground: $white;
+$background: $white;
+$foreground: $black;
 $dark-grey: darken($background, 10);
 $light-grey: lighten($background, 30);
 $accent:#FF9A47;

@@ -1,7 +1,7 @@
-<div [@routerTransition]="getState(o)" class="wrapper">
-    <app-nav-bar></app-nav-bar>
+<div [@routerTransition]="getState(o)"  class="wrapper">
+    <app-nav-bar [@backgroundTransition]="getState(o)"></app-nav-bar>
     <div id="content">
         <router-outlet #o="outlet"></router-outlet>
     </div>
-    <app-footer [hidden]="!showFooter"></app-footer>
+    <app-footer [@backgroundTransition]="getState(o)" [hidden]="!showFooter"></app-footer>
 </div>

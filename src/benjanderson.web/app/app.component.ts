@@ -4,13 +4,13 @@ import 'rxjs/add/operator/map';
 
 import { AppInsightsService } from 'ng2-appinsights';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
-import { routerTransition } from './router.animations';
+import { routerTransition, backgroundTransition } from './router.animations';
 
 @Component({
     selector: 'app-main',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    animations: [routerTransition]
+    animations: [routerTransition, backgroundTransition]
 })
 export class AppComponent implements OnInit {
     public showFooter = true;
