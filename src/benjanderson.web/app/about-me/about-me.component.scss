@@ -9,7 +9,9 @@ $primary-text: $black;
 $secondary-text: lighten($black, 25); 
 $link: #acb7c0; // anchor tags
 
-$change-me:  darken($lime, 20); 
+// timeline icon - colors
+$project-color:  $green; 
+$company-color:  $orange; 
 
 
 //Monochromatic - https://color.adobe.com/create/color-wheel/?base=2&rule=Monochromatic&selected=0&name=My%20Color%20Theme&mode=rgb&rgbvalues=0.3588235294117647,0.8999999999999999,0.658823529411663,0.46579520697167753,0.6666666666666666,0.5771478639764707,0.23921568627450981,0.6,0.4392156862745098,0.6288235294117646,0.8999999999999999,0.7791496163682354,0.15947712418300652,0.39999999999999997,0.29281045751629464&swatchOrder=0,1,2,3,4
@@ -44,8 +46,20 @@ $color5: #5BE5A8;
     color: $white;
 }
 
-hr {
-	background-color: $color1;
+fieldset {
+	border: 1px groove #ddd;
+	padding: 0 1em 1em 1em;
+	margin: 0 0 1em 0;
+	box-shadow:  0px 0px 0px 0px #000;
+
+	legend {
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: left;
+        width:auto;
+        padding:0 10px;
+        border-bottom:none;
+    }
 }
 
 // mixins - rem fallback - credits: http://zerosixthree.se/
@@ -102,8 +116,16 @@ Modules - reusable parts of our design
 
 -------------------------------- */
 
-.page-header{
-    text-align: center;
+.page-header {
+	text-align: center;
+}
+
+.skills {
+	text-align: center;
+
+	h2 {
+		margin-bottom: 2rem;
+	}
 }
 
 .cd-container { /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
@@ -156,7 +178,7 @@ Modules - reusable parts of our design
     .date {
         position: absolute;
         @include font-size(25px);
-        color: darken($background, 5%);
+        color: $secondary-text;
         top: -10px;
         left: 55px;
         
@@ -224,10 +246,28 @@ Modules - reusable parts of our design
 		top: 50%;
 		margin-left: -12px;
 		margin-top: -12px;
+		@include MQ(L) {
+			width: 40px;
+			height: 40px;
+			margin-left: -20px;		
+			margin-top: -20px;		
+		}
 	}
 
-	&.cd-icon {
-		background: $change-me;
+	&.cd-hc {
+		background-color: #00AEEF;
+	}
+
+	&.cd-eforce {
+		background-color: #F8981D;
+	}
+
+	&.cd-usu {
+		background-color: #0F2439;
+	}
+
+	&.cd-project {
+		background: $project-color;
 	}
 
 	@include MQ(L) {
@@ -261,26 +301,31 @@ Modules - reusable parts of our design
 	}
 
 	p {
-		margin: 1em 0;
+		margin: 0 0 1em 0;
 		line-height: 1.6;
     }    
-
-	.cd-read-more {
-		float: right;
-		padding: .8em 1em;
-		background: $link;
-		color: $color3;
-		@include border-radius;
-
-		.no-touch &:hover {
-			background-color: lighten($link, 5%);
-		}
-	}
 
 	.cd-date {
 		float: left;
 		padding: .8em 0;
 		//opacity: .8;
+	}
+
+	.tags {
+		list-style: none;
+		padding: 0;
+	}
+
+	.tags>li {
+		background-color: #639bcc;
+		border: 1px solid #639bcc;
+		border-radius: 2px;
+		padding: 2px 6px;
+		color: white;
+		display: inline;
+		margin: 2px;
+		font-size: 0.8rem;
+		white-space: nowrap
 	}
 
 	&::before {
