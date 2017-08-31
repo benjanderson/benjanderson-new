@@ -56,8 +56,8 @@ const slideRight = [
 
 export const routerTransition =
     trigger('routerTransition', [
-        transition('home => about-me, about-me => color-test, home => color-test', slideLeft),
-        transition('about-me => home, color-test => about-me, color-test => home', slideRight)
+        transition('home => about-me, about-me => demo, home => demo', slideLeft),
+        transition('about-me => home, demo => about-me, demo => home', slideRight)
     ]);
 
 export const backgroundTransition =
@@ -69,7 +69,7 @@ export const backgroundTransition =
         state('about-me', style({
             backgroundColor: '#3D9970'
         })),
-        state('color-test', style({
+        state('demo', style({
             backgroundColor: '#0074D9'
         })),
         transition('* => *', [animate('0.5s')])

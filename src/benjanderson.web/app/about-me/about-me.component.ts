@@ -11,7 +11,7 @@ export class AboutMeComponent implements OnInit {
       title: 'Health Catalyst',
       subtitle: 'Senior Software Engineer',
       description: ['Led team of 5 to successful completion of project.', 'Part of architecture leadership',
-        'Interviewed new candidates applying for the larger development team', 'Active lead in Scrum/Agile process'],
+        'Interviewed new candidates applying for the larger development team', 'Active team lead in Scrum/Agile process'],
       date: 'Oct 2014 - Present',
       icon: 'http://files.benjaminjanderson.com/benjaminjandersonblob/cd-icon-healthcatalyst.png',
       class: 'cd-hc',
@@ -19,13 +19,13 @@ export class AboutMeComponent implements OnInit {
         {
           title: 'Atlas',
           description: 'Senior Engineering role in web based index of Data Warehouse. ' +
-          'Led design of project setup of webpack and development/test enviroments',
+          'Led design of project setup of webpack and development/test environments',
           tags: ['Angular', 'ASP.net', 'C#', 'webpack', 'karma']
         },
         {
           title: 'Instant Data Entry Application (IDEA)',
           description: 'Led team of 4 developers and 1 quality assurance engineer for over a year to successful ' +
-          'completion of web based data managment tool',
+          'completion of web based data management  tool',
           tags: ['AngularJs', 'ASP.net', 'C#', 'Sql Server', 'jasmine']
         },
       ]
@@ -48,7 +48,7 @@ export class AboutMeComponent implements OnInit {
           tags: ['WCF', 'ASP.net', 'C#', 'Entity Framework', 'Sql Server']
         },
         {
-          title: 'IOS and Android Mobile Applications ',
+          title: 'IOS and Android Mobile Applications',
           description: 'Independently developed IOS/Android application to improve officer safety and record keeping. ' + 
           'Used modern technology to create an interoperable and scalable application.',
           tags: ['Web Services', 'ASP.net', 'C#', 'Xamarin', 'IOS', 'Android']

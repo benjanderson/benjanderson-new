@@ -17,6 +17,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ColorTestGraphComponent } from './color-test-graph/color-test-graph.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { FooterComponent } from './footer/footer.component';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { FooterComponent } from './footer/footer.component';
         NavBarComponent,
         ColorTestGraphComponent,
         AboutMeComponent,
-        FooterComponent
+        FooterComponent,
+        DemoComponent
     ],
     imports: [
         BrowserModule,
