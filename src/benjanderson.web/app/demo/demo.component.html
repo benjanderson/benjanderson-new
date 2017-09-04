@@ -1,3 +1,20 @@
-<p>
-  demo works!
-</p>
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-12 col-md-5 thumb-cell">
+      <a [routerLink]="['/demo/color-test']">
+        <div class="thumb-container">
+          <img class="img-fluid" [lazyLoad]="'https://benjaminjandersonstore.blob.core.windows.net/benjaminjandersonblob/color-blind-thumb.jpg'"
+          />
+        </div>
+      </a>
+    </div>
+    <div class="col-12 col-md-5 thumb-cell">
+      <a [routerLink]="['/demo/color-test']">
+        <div class="thumb-container">
+          <img class="img-fluid" [lazyLoad]="'https://benjaminjandersonstore.blob.core.windows.net/benjaminjandersonblob/color-blind-thumb.jpg'"
+          />
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

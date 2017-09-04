@@ -1,0 +1,43 @@
+@import './../../Styles/_variables.scss';
+
+$height: 290px;
+
+.thumb-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    display: block;
+    mix-blend-mode: multiply;
+    height: $height;
+    background-color: #000;//customize bg-color per box
+    
+    &:hover img {
+        opacity: 1;
+        filter: grayscale(0);
+        transform: scale(1.1);
+    }
+
+    img {
+        transition: all 0.2s ease-in-out;
+        height: $height;
+    }
+}
+
+.thumb-cell {
+    position: relative;
+    overflow: hidden;
+    height: $height;
+    padding: 0;
+    margin: 20px;
+    a {
+        height: 100%;
+        width: 100%;
+        display: block;
+    }
+}
+

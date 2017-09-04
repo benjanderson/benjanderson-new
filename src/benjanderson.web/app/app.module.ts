@@ -8,6 +8,7 @@ import { DndModule } from 'ng2-dnd';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { D3Service } from 'd3-ng2-service';
 import { AppInsightsModule } from 'ng2-appinsights';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,7 +39,8 @@ import { DemoComponent } from './demo/demo.component';
         DndModule.forRoot(),
         NgbModule.forRoot(),
         AppInsightsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        LazyLoadImageModule
     ],
     providers: [D3Service],
     bootstrap: [AppComponent]
