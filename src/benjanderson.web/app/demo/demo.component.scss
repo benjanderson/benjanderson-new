@@ -12,15 +12,18 @@
         background-color: red; 
     }
     
-    &:hover img {
+    &:hover img.ng-lazyloaded {
         opacity: 1;
         filter: grayscale(0);
         transform: scale(1.1);
     }
 
     img {
-        opacity: 0.5;
+        opacity: 0;
         transition: all 0.2s ease-in-out;
+        &.ng-lazyloaded {
+            opacity: 0.5;
+        }
     }
 }
 

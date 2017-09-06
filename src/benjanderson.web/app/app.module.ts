@@ -19,6 +19,7 @@ import { ColorTestGraphComponent } from './color-test-graph/color-test-graph.com
 import { AboutMeComponent } from './about-me/about-me.component';
 import { FooterComponent } from './footer/footer.component';
 import { DemoComponent } from './demo/demo.component';
+import { AnimationStateService } from './services/animation-state.service';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,7 @@ import { DemoComponent } from './demo/demo.component';
         BrowserAnimationsModule,
         LazyLoadImageModule
     ],
-    providers: [D3Service],
+    providers: [D3Service, AnimationStateService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

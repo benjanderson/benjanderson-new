@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { AppInsightsService } from 'ng2-appinsights';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { routerTransition, backgroundTransition } from './router.animations';
+import { AnimationStateService } from './services/animation-state.service';
 
 @Component({
     selector: 'app-main',
@@ -15,7 +16,7 @@ import { routerTransition, backgroundTransition } from './router.animations';
 export class AppComponent implements OnInit {
     public showFooter = true;
 
-    constructor(private appinsightsService: AppInsightsService, private router: Router) {
+    constructor(private appinsightsService: AppInsightsService, private router: Router, private animationState: AnimationStateService) {
     }
 
     public getState(outlet): string {
@@ -41,5 +42,13 @@ export class AppComponent implements OnInit {
                 }
             }
         }).subscribe();
+    }
+
+    public animationStarted($event): void {
+        this.animationState.emit({name: 'started', $event});
+    }
+
+    public animationDone($event): void {
+        this.animationState.emit({name: 'finished', $event});
     }
 }

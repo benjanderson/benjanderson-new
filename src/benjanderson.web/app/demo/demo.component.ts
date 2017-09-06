@@ -1,15 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { AnimationStateService } from '../services/animation-state.service';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.scss']
+  styleUrls: ['./demo.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DemoComponent implements OnInit {
+export class DemoComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
 
-  constructor() { }
+  public defaultImage = 'http://files.benjaminjanderson.com/benjaminjandersonblob/demo-placeholder.png';
 
-  ngOnInit() {
+  public images = [];
+
+  constructor(private animationState: AnimationStateService, private cd: ChangeDetectorRef) {
   }
 
+  ngOnInit() {
+    this.subscription = this.animationState
+      .map((state) => {
+        if (state.$event.toState === 'demo' && state.name === 'finished') {
+          this.images = [
+            {
+              imageSrc: 'http://files.benjaminjanderson.com/benjaminjandersonblob/demo-color-test.png',
+              cssClass: 'color-test',
+              routerLink: '/demo/color-test'
+            },
+            {
+              imageSrc: 'http://files.benjaminjanderson.com/benjaminjandersonblob/demo-chess.png',
+              cssClass: 'chess',
+              routerLink: '/demo/chess'
+            }];
+          this.cd.detectChanges();
+        }
+      })
+      .subscribe();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    this.subscription = null;
+  }
 }
