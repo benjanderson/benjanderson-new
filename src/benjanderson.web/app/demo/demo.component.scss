@@ -1,20 +1,16 @@
 @import './../../Styles/_variables.scss';
-
-$height: 290px;
+@import '../../../../node_modules/bootstrap/scss/bootstrap';
 
 .thumb-container {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     z-index: 10;
     display: block;
     mix-blend-mode: multiply;
-    height: $height;
-    background-color: #000;//customize bg-color per box
+    &.color-test {
+        background-color: #0074D9; 
+    }
+    &.chess {
+        background-color: red; 
+    }
     
     &:hover img {
         opacity: 1;
@@ -23,21 +19,21 @@ $height: 290px;
     }
 
     img {
+        opacity: 0.5;
         transition: all 0.2s ease-in-out;
-        height: $height;
     }
 }
 
 .thumb-cell {
-    position: relative;
     overflow: hidden;
-    height: $height;
     padding: 0;
-    margin: 20px;
-    a {
-        height: 100%;
-        width: 100%;
-        display: block;
-    }
+    
+    @include media-breakpoint-up(md) { 
+        margin: 10px;
+    } 
+
+    @include media-breakpoint-up(lg) { 
+        margin: 20px;
+    } 
 }
 
