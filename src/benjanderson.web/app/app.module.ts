@@ -8,7 +8,6 @@ import { DndModule } from 'ng2-dnd';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { D3Service } from 'd3-ng2-service';
 import { AppInsightsModule } from 'ng2-appinsights';
-import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +19,7 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { FooterComponent } from './footer/footer.component';
 import { DemoComponent } from './demo/demo.component';
 import { AnimationStateService } from './services/animation-state.service';
+import { ChessComponent } from './chess/chess.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +30,8 @@ import { AnimationStateService } from './services/animation-state.service';
         ColorTestGraphComponent,
         AboutMeComponent,
         FooterComponent,
-        DemoComponent
+        DemoComponent,
+        ChessComponent
     ],
     imports: [
         BrowserModule,
@@ -41,7 +42,6 @@ import { AnimationStateService } from './services/animation-state.service';
         NgbModule.forRoot(),
         AppInsightsModule,
         BrowserAnimationsModule,
-        LazyLoadImageModule
     ],
     providers: [D3Service, AnimationStateService],
     bootstrap: [AppComponent]
