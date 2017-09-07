@@ -4,26 +4,43 @@
 .thumb-container {
     z-index: 10;
     display: block;
+    
     mix-blend-mode: multiply;
     &.color-test {
-        background-color: #0074D9; 
+        background-color: darken($green, 20); 
     }
     &.chess {
-        background-color: red; 
+        background-color: darken($red, 20); 
     }
     
-    &:hover img.ng-lazyloaded {
+    &:hover img {
         opacity: 1;
         filter: grayscale(0);
         transform: scale(1.1);
     }
 
-    img {
+    &:hover h4{
         opacity: 0;
+    }
+
+    h4 {
+        margin: 0;
+        position: absolute;
+        top: 36%;
+        left: 0;
+        z-index: 15;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        font-size: 5rem;
+    }
+
+    img {
+        opacity: 0.5;
         transition: all 0.2s ease-in-out;
-        &.ng-lazyloaded {
-            opacity: 0.5;
-        }
+        // &.ng-lazyloaded {
+        //     opacity: 0.5;
+        // }
     }
 }
 
@@ -38,5 +55,8 @@
     @include media-breakpoint-up(lg) { 
         margin: 20px;
     } 
+
+    position: relative;
+    
 }
 

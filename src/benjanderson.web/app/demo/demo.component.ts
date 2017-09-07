@@ -14,34 +14,26 @@ export class DemoComponent implements OnInit, OnDestroy {
 
   public defaultImage = 'http://files.benjaminjanderson.com/benjaminjandersonblob/demo-placeholder.png';
 
-  public images = [];
+  public images = [
+    {
+      title: 'Color Test',
+      imageSrc: 'http://files.benjaminjanderson.com/benjaminjandersonblob/demo-color-test.png',
+      cssClass: 'color-test',
+      routerLink: '/demo/color-test'
+    },
+    {
+      title: 'Chess',
+      imageSrc: 'http://files.benjaminjanderson.com/benjaminjandersonblob/demo-chess.png',
+      cssClass: 'chess',
+      routerLink: '/demo/chess'
+    }];
 
-  constructor(private animationState: AnimationStateService, private cd: ChangeDetectorRef) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.subscription = this.animationState
-      .map((state) => {
-        if (state.$event.toState === 'demo' && state.name === 'finished') {
-          this.images = [
-            {
-              imageSrc: 'http://files.benjaminjanderson.com/benjaminjandersonblob/demo-color-test.png',
-              cssClass: 'color-test',
-              routerLink: '/demo/color-test'
-            },
-            {
-              imageSrc: 'http://files.benjaminjanderson.com/benjaminjandersonblob/demo-chess.png',
-              cssClass: 'chess',
-              routerLink: '/demo/chess'
-            }];
-          this.cd.detectChanges();
-        }
-      })
-      .subscribe();
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.subscription = null;
   }
 }

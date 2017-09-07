@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row align-items-stretch">
-    <div class="col-12 col-md thumb-cell" *ngFor="let image of images" >
+    <div class="col-12 col-md thumb-cell" *ngFor="let image of images">
       <a [routerLink]="[image.routerLink]">
         <div [ngClass]="image.cssClass" class="thumb-container color-test">
-          <img class="img-fluid" [defaultImage]="defaultImage" [lazyLoad]="image.imageSrc" />
+          <h4>{{image.title}}</h4>
+          <img class="img-fluid" [src]="image.imageSrc" />
         </div>
       </a>
-    </div>    
+    </div>
   </div>
 </div>
