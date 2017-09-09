@@ -85,6 +85,16 @@ fieldset {
   font-size: calculateRem($size);
 }
 
+.mb-0.display-4{
+	font-size: 1.5rem;
+	@include media-breakpoint-up(md) {
+		font-size: 2.5rem;
+	}
+	@include media-breakpoint-up(lg){
+		font-size: 3.5rem;
+	}
+}
+
 // mixins - border radius
 
 @mixin border-radius($radius:.5em) {
@@ -127,6 +137,8 @@ Modules - reusable parts of our design
 		margin-bottom: 2rem;
 	}
 }
+
+
 
 .cd-container { /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
 	width: 90%;
@@ -317,15 +329,15 @@ Modules - reusable parts of our design
 	}
 
 	.tags>li {
+		float: left;
 		background-color: #639bcc;
 		border: 1px solid #639bcc;
 		border-radius: 2px;
 		padding: 2px 6px;
 		color: white;
-		display: inline;
 		margin: 2px;
 		font-size: 0.8rem;
-		white-space: nowrap
+		white-space: nowrap;
 	}
 
 	&::before {
