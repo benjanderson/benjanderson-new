@@ -27,7 +27,7 @@
             <li [ngStyle]="getStyle(colorArray1.Color1)"></li>
             <li *ngFor="let color of colorArray1.Colors; let i = index" [ngStyle]="getStyle(color)" [sortableIndex]="i" dnd-sortable
                 draggable="true" [ngClass]="{'incorrect': color.incorrect }" [dragEnabled]="color.enabled" (onDragStart)="countClick()">
-                <div *ngIf="!!color.message" ngbPopover="{{color.message}}" triggers="mouseenter:mouseleave">&nbsp;</div>
+                <div *ngIf="!!color.message" ngbPopover="'{{color.message}}'" triggers="mouseenter:mouseleave">&nbsp;</div>
             </li>
             <li [ngStyle]="getStyle(colorArray1.Color2)"></li>
         </ul>

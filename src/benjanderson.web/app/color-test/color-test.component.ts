@@ -7,7 +7,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 import { D3Service, D3, D3DragEvent, D3ZoomEvent, Selection } from 'd3-ng2-service';
-import { NgbPopoverWindow } from '@ng-bootstrap/ng-bootstrap/popover/popover';
 import { ColorScore } from '../color-test-graph/color-test-graph.component';
 import { AppInsightsService } from 'ng2-appinsights';
 
@@ -17,7 +16,6 @@ import { AppInsightsService } from 'ng2-appinsights';
   styleUrls: ['./color-test.component.scss']
 })
 export class ColorTestComponent implements OnInit {
-  @HostBinding('attr.myHilite') popover = new NgbPopoverWindow();
   private numElements = 13;
   public colorArray1: ColorArray = {
     Color1: new Color(-1, 172, 118, 114),
