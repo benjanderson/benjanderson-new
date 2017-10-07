@@ -5,9 +5,6 @@
     <PreserveCompilationContext>true</PreserveCompilationContext>
   </PropertyGroup>
   <PropertyGroup>
-    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
-  </PropertyGroup>
-  <PropertyGroup>
     <UserSecretsId>aspnet-benjanderson.web-cb077653-b5a8-40cb-b4ce-e8603e6d6f14</UserSecretsId>
     <ApplicationInsightsResourceId>/subscriptions/d3856b74-e0b1-4442-b993-25ba6feb5edb/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/components/benjaminjanderson</ApplicationInsightsResourceId>
     <ApplicationInsightsAnnotationResourceId>/subscriptions/d3856b74-e0b1-4442-b993-25ba6feb5edb/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/components/benjaminjanderson</ApplicationInsightsAnnotationResourceId>
