@@ -1,4 +1,4 @@
-﻿using benjanderson.web.Services;
+using benjanderson.web.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +7,18 @@ using System.Net;
 
 namespace benjanderson.web.Models
 {
-     public class ColorTestStats : BaseEntity
-     {
-          public DateTime Date { get; set; }
+     //public class ColorTestStats : BaseEntity
+     //{
+     //     public DateTime Date { get; set; }
 
-          public int Age { get; set; }
+     //     public int Age { get; set; }
 
-          public double Score { get; set; }
+     //     public double Score { get; set; }
 
-          public string Gender { get; set; }
+     //     public string Gender { get; set; }
 
-          public int Clicks { get; set; }
+     //     public int Clicks { get; set; }
 
-          public string IpAddress { get; set; }
-     }
+     //     public string IpAddress { get; set; }
+     //}
 }
