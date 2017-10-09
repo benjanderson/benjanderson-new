@@ -23,7 +23,7 @@ namespace benjanderson.web.Controllers
                this.boxConfig = boxConfig;
           }
 
-          [Route("BirthdayBot")]
+          [Route("api/birthdaybot")]
           [HttpPost]
           public async Task<IActionResult> Index(string fileId)
           {
