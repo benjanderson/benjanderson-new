@@ -49,7 +49,7 @@ export class AboutMeComponent implements OnInit {
         },
         {
           title: 'IOS and Android Mobile Applications',
-          description: 'Independently developed IOS/Android application to improve officer safety and record keeping. ' + 
+          description: 'Independently developed IOS/Android application to improve officer safety and record keeping. ' +
           'Used modern technology to create an interoperable and scalable application.',
           tags: ['Web Services', 'ASP.net', 'C#', 'Xamarin', 'IOS', 'Android']
         },

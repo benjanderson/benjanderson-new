@@ -46,7 +46,7 @@ export class ColorTestGraphComponent implements OnDestroy {
   private bindGraph() {
     const d3 = this.d3;
     let d3ParentElement: Selection<HTMLElement, any, null, undefined>;
-    let d3G: Selection<SVGGElement, any, null, undefined>;
+    const d3G: Selection<SVGGElement, any, null, undefined>;
 
     if (this.parentNativeElement !== null) {
       d3ParentElement = d3.select(this.parentNativeElement);
