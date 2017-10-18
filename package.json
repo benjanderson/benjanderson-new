@@ -22,7 +22,14 @@
     "@angular/platform-browser": "^4.3.1",
     "@angular/platform-browser-dynamic": "^4.3.1",
     "@angular/router": "^4.3.1",
+    "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
+    "d3-ng2-service": "^1.21.0",
+    "font-awesome": "^4.7.0",
+    "install": "^0.10.1",
+    "lodash": "^4.17.4",
+    "ng2-dnd": "^4.2.0",
+    "npm": "^5.5.1",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
@@ -42,10 +49,12 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "node-sass": "^4.5.3",
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.2.0"
+    "typescript": "~2.2.0",
+    "webpack": "^3.8.1"
   },
   "repository": "https://github.com/benjanderson/benjanderson-new.git",
   "author": "Ben Anderson <ben.anderson@healthcatalyst.com>"
