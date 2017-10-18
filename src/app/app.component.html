@@ -1,0 +1,7 @@
+<div [@routerTransition]="getState(o)"  class="wrapper" (@routerTransition.start)="animationStarted($event)" (@routerTransition.done)="animationDone($event)">
+  <app-nav-bar [@backgroundTransition]="getState(o)"></app-nav-bar>
+  <div id="content">
+      <router-outlet #o="outlet"></router-outlet>
+  </div>
+  <app-footer [@backgroundTransition]="getState(o)" [hidden]="!showFooter"></app-footer>
+</div>

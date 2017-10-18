@@ -1,9 +1,9 @@
 ﻿import { NgModule, OnInit } from '@angular/core';
 import { Routes, RouterModule, NavigationStart, NavigationEnd } from '@angular/router';
 
+
 import { ColorTestComponent } from './color-test/color-test.component';
 import { HomeComponent } from './home/home.component';
-import { AppInsightsService } from 'ng2-appinsights';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { DemoComponent } from './demo/demo.component';
 import { ChessComponent } from './chess/chess.component';

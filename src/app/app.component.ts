@@ -2,7 +2,6 @@
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { AppInsightsService } from 'ng2-appinsights';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { routerTransition, backgroundTransition } from './router.animations';
 import { AnimationStateService } from './services/animation-state.service';
@@ -16,7 +15,7 @@ import { AnimationStateService } from './services/animation-state.service';
 export class AppComponent implements OnInit {
     public showFooter = true;
 
-    constructor(private appinsightsService: AppInsightsService, private router: Router, private animationState: AnimationStateService) {
+    constructor(private router: Router, private animationState: AnimationStateService) {
     }
 
     public getState(outlet): string {
@@ -24,13 +23,13 @@ export class AppComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.appinsightsService.Init({
-            instrumentationKey: '22828057-ee08-4280-a79b-ac327059ffb2'
-        });
+        // this.appinsightsService.Init({
+        //     instrumentationKey: '22828057-ee08-4280-a79b-ac327059ffb2'
+        // });
 
         this.router.events.map(event => {
             if (event instanceof NavigationEnd) {
-                this.appinsightsService.trackPageView(event.url);
+                // this.appinsightsService.trackPageView(event.url);
                 switch (event.url) {
                     case '/':
                     case '/about-me':

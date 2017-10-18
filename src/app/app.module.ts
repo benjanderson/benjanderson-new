@@ -1,4 +1,4 @@
-﻿import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DndModule } from 'ng2-dnd';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { D3Service } from 'd3-ng2-service';
-import { AppInsightsModule } from 'ng2-appinsights';
+// import { AppInsightsModule } from 'ng2-appinsights';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +18,7 @@ import { ColorTestGraphComponent } from './color-test-graph/color-test-graph.com
 import { AboutMeComponent } from './about-me/about-me.component';
 import { FooterComponent } from './footer/footer.component';
 import { DemoComponent } from './demo/demo.component';
-import { AnimationStateService } from './services/animation-state.service';
+ import { AnimationStateService } from './services/animation-state.service';
 import { ChessComponent } from './chess/chess.component';
 
 @NgModule({
@@ -40,7 +40,6 @@ import { ChessComponent } from './chess/chess.component';
         AppRoutingModule,
         DndModule.forRoot(),
         NgbModule.forRoot(),
-        AppInsightsModule,
         BrowserAnimationsModule,
     ],
     providers: [D3Service, AnimationStateService],

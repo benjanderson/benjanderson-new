@@ -8,7 +8,6 @@ import 'rxjs/add/observable/throw';
 
 import { D3Service, D3, D3DragEvent, D3ZoomEvent, Selection } from 'd3-ng2-service';
 import { ColorScore } from '../color-test-graph/color-test-graph.component';
-import { AppInsightsService } from 'ng2-appinsights';
 
 @Component({
   selector: 'app-color-test',
@@ -57,9 +56,10 @@ export class ColorTestComponent implements OnInit {
 
   public gender = 'M';
 
-  public data: Array<ColorScore>;
+  // public data: Array<ColorScore>;
+  public data: Array<any>;
 
-  constructor(private http: Http, private appinsightsService: AppInsightsService) { }
+  constructor(private http: Http) { }
 
   ngOnInit() {
     const setColor = (index: number, array: ColorArray): Color => {
@@ -177,10 +177,10 @@ export class ColorTestComponent implements OnInit {
       const body = error.json() || '';
       const err = (<any>body).error || JSON.stringify(body);
       errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-      this.appinsightsService.trackException(new Error(errMsg));
+      // this.appinsightsService.trackException(new Error(errMsg));
     } else {
       errMsg = error.message ? error.message : error.toString();
-      this.appinsightsService.trackException(error);
+      // this.appinsightsService.trackException(error);
     }
     console.error(errMsg);
     alert('something went horribly wrong, please try again later');
