@@ -84,15 +84,17 @@ namespace benjanderson.web
 
           public void ConfigureSinglePageApplication(IApplicationBuilder app)
           {
+               app.UseStaticFiles();
                app.UseMvc(routes =>
                {
-                    routes.MapRoute("default", "{controller}/{action=Index}");
+                    routes.MapRoute(
+                         name: "default",
+                         template: "{controller=Home}/{action=Index}/{id?}");
+
+                    routes.MapSpaFallbackRoute(
+                         name: "spa-fallback",
+                         defaults: new { controller = "Home", action = "Index" });
                });
-
-               app.UseMiddleware<NotFoundMiddleware>();
-
-               // Serve wwwroot as root
-               app.UseFileServer();
           }
 
           private class LocalConnectionStringFactory : IConnectionStringFactory
