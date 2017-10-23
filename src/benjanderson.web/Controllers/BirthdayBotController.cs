@@ -12,6 +12,7 @@ using NPOI.XSSF.UserModel;
 
 namespace benjanderson.web.Controllers
 {
+     [Route("birthdaybot")]
      public class BirthdayBotController : Controller
      {
           private readonly BoxConfig boxConfig;
@@ -21,17 +22,20 @@ namespace benjanderson.web.Controllers
                this.boxConfig = boxConfig;
           }
 
-          [Route("birthdaybot")]
           [HttpGet]
           public IActionResult Get(string fileId)
           {
                return this.Json(DateTime.Now);
           }
 
-          [Route("birthdaybot")]
-          [HttpPost]
-          public async Task<IActionResult> Post(string fileId)
+          [HttpPost("{fileId}")]
+          public async Task<IActionResult> Post([FromRoute]string fileId)
           {
+               if (string.IsNullOrEmpty(fileId))
+               {
+                    throw new ArgumentException("Invalid or null fileId");
+               }
+
                //var session = new OAuthSession("<DEV TOKEN HERE>", "NOT_NEEDED", 3600, "bearer");
                //var client = new BoxClient(this.boxConfig, session);
 
@@ -41,7 +45,7 @@ namespace benjanderson.web.Controllers
 
                var birthdays = new List<Birthday>();
 
-               var stream = await client.FilesManager.DownloadStreamAsync(fileId);
+               var stream = await client.FilesManager.DownloadStreamAsync(fileId.ToString());
                IWorkbook workbook = new XSSFWorkbook(stream);
                var sheet = workbook.GetSheet("Sheet1");
                for (var i = 2; i < sheet.LastRowNum; i++)
@@ -71,7 +75,7 @@ namespace benjanderson.web.Controllers
 
                          var date = DateTime.ParseExact(formattedDateString, "MMMM d yyyy",
                               CultureInfo.InvariantCulture);
-                         birthdays.Add(new Birthday {Name = name, Date = date});
+                         birthdays.Add(new Birthday { Name = name, Date = date });
                     }
                     catch (FormatException)
                     {
@@ -98,7 +102,7 @@ namespace benjanderson.web.Controllers
                                      Environment.NewLine;
                }
 
-               slackClient.PostMessage(new Payload {Text = messageString});
+               slackClient.PostMessage(new Payload { Text = messageString });
 
                return this.Ok(birthdays);
           }
