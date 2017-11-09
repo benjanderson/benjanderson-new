@@ -5,7 +5,7 @@
     z-index: 10;
     display: block;
     
-    mix-blend-mode: multiply;
+    // mix-blend-mode: multiply;
     &.color-test {
         background-color: darken($green, 20); 
     }
