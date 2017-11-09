@@ -1,15 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System.IO;
-using System;
 using benjanderson.web.Services;
-using benjanderson.web.Models;
-using Microsoft.AspNetCore.Http;
-using System.Threading.Tasks;
 using Box.V2.Config;
 
 namespace benjanderson.web
@@ -24,7 +18,7 @@ namespace benjanderson.web
                    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                    .AddEnvironmentVariables();
 
-               Configuration = builder.Build();
+               this.Configuration = builder.Build();
           }
 
           public IConfigurationRoot Configuration { get; }
@@ -33,15 +27,11 @@ namespace benjanderson.web
           public void ConfigureServices(IServiceCollection services)
           {
                services.AddMvc();
-               //services.AddScoped(typeof(MongoDBRepository<>));
                services.AddSingleton<SpaResponse>();
-               services.AddSingleton<IConnectionStringFactory>((provider) =>
+               services.AddSingleton<IConnectionStringFactory>((provider) => new LocalConnectionStringFactory
                {
-                    return new LocalConnectionStringFactory
-                    {
-                         ConnectionString = this.Configuration.GetConnectionString("DefaultConnection"),
-                         Database = this.Configuration.GetSection("MongoDatabaseName").Value
-                    };
+                    ConnectionString = this.Configuration.GetConnectionString("DefaultConnection"),
+                    Database = this.Configuration.GetSection("MongoDatabaseName").Value
                });
 
                services.AddSingleton<BoxConfig>((provider) =>
@@ -50,14 +40,14 @@ namespace benjanderson.web
                     var clientId = boxAppSettings.GetSection("clientID").Value;
                     var clientSecret = boxAppSettings.GetSection("clientSecret").Value;
                     var url = boxAppSettings.GetSection("url").Value;
-                    var enterpriseID = boxAppSettings.GetSection("enterpriseID").Value;
+                    var enterpriseId = boxAppSettings.GetSection("enterpriseID").Value;
 
                     var appAuth = boxAppSettings.GetSection("appAuth");
-                    var publicKeyID = appAuth.GetSection("publicKeyID").Value;
+                    var publicKeyId = appAuth.GetSection("publicKeyID").Value;
                     var privateKey = appAuth.GetSection("privateKey").Value;
                     var passphrase = appAuth.GetSection("passphrase").Value;
 
-                    return new BoxConfig(clientId, clientSecret, enterpriseID, privateKey, passphrase, publicKeyID);
+                    return new BoxConfig(clientId, clientSecret, enterpriseId, privateKey, passphrase, publicKeyId);
 
                });
           }
@@ -65,7 +55,7 @@ namespace benjanderson.web
           // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
           public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
           {
-               loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+               loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));
                loggerFactory.AddDebug();
 
                if (env.IsDevelopment())

@@ -12,6 +12,10 @@ using NPOI.XSSF.UserModel;
 
 namespace benjanderson.web.Controllers
 {
+     using Box.V2;
+     using Box.V2.Auth;
+     using Microsoft.Extensions.Configuration;
+
      [Route("birthdaybot")]
      public class BirthdayBotController : Controller
      {
@@ -41,11 +45,11 @@ namespace benjanderson.web.Controllers
 
                var boxJwt = new BoxJWTAuth(this.boxConfig);
                var adminToken = boxJwt.AdminToken(); //valid for 60 minutes so should be cached and re-used
-               var client = boxJwt.AdminClient(adminToken);
+               var client = boxJwt.AdminClient(adminToken, "225748773", true);
 
                var birthdays = new List<Birthday>();
 
-               var stream = await client.FilesManager.DownloadStreamAsync(fileId.ToString());
+               var stream = await client.FilesManager.DownloadStreamAsync(fileId);
                IWorkbook workbook = new XSSFWorkbook(stream);
                var sheet = workbook.GetSheet("Sheet1");
                for (var i = 2; i < sheet.LastRowNum; i++)

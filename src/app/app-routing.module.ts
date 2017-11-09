@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: 'demo/chess', component: ChessComponent, pathMatch: 'full', data: { state: 'demo' } },
     { path: 'demo', component: DemoComponent, pathMatch: 'full', data: { state: 'demo' } },
     { path: 'about-me', component: AboutMeComponent, pathMatch: 'full', data: { state: 'about-me' } },
-    { path: '**', component: HomeComponent }
+    { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,7 +19,6 @@ namespace benjanderson.web.Controllers
                this.spaResponse = spaResponse;
           }
 
-          [Route("/")]
           public IActionResult Index()
           {
                var html = this.spaResponse.GetResponse(this.Request, this.Response);
