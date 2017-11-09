@@ -17,8 +17,9 @@ import { ColorTestGraphComponent } from './color-test-graph/color-test-graph.com
 import { AboutMeComponent } from './about-me/about-me.component';
 import { FooterComponent } from './footer/footer.component';
 import { DemoComponent } from './demo/demo.component';
-import { AnimationStateService } from './services/animation-state.service';
+import { AnimationStateService } from './services/animation-state/animation-state.service';
 import { ChessComponent } from './chess/chess.component';
+import { AppInsightsService } from './services/app-insights/app-insights.service';
 
 @NgModule({
     declarations: [
@@ -38,9 +39,9 @@ import { ChessComponent } from './chess/chess.component';
         HttpModule,
         AppRoutingModule,
         DndModule.forRoot(),
-        BrowserAnimationsModule,
+        BrowserAnimationsModule
     ],
-    providers: [D3Service, AnimationStateService],
+    providers: [D3Service, AnimationStateService, AppInsightsService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,7 +22,8 @@
         "Styles/styles.scss"
       ],
       "scripts": [
-        "./assets/DragDropTouch.js"
+        "./assets/DragDropTouch.js",
+        "../node_modules/applicationinsights-js/dist/ai.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
