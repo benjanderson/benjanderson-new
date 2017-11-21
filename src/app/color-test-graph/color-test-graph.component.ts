@@ -10,7 +10,7 @@ export interface ColorScore {
 
 @Component({
   selector: 'app-color-test-graph',
-  template: '<svg></svg>',
+  template: `<svg></svg>`,
   styleUrls: ['./color-test-graph.component.scss']
 })
 export class ColorTestGraphComponent implements OnDestroy {

@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DndModule } from 'ng2-dnd';
 import { D3Service } from 'd3-ng2-service';
 import { AngularFireModule } from 'angularfire2';
-// import { AppInsightsModule } from 'ng2-appinsights';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DemoComponent } from './demo/demo.component';
 import { AnimationStateService } from './services/animation-state.service';
 import { ChessComponent } from './chess/chess.component';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyCvXguqBaF3o7jLYbphvszZYZGYuGfWvYA',
@@ -49,7 +49,8 @@ const firebaseConfig = {
         AppRoutingModule,
         DndModule.forRoot(),
         BrowserAnimationsModule,
-        AngularFireModule.initializeApp(firebaseConfig)
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFirestoreModule
     ],
     providers: [D3Service, AnimationStateService],
     bootstrap: [AppComponent]

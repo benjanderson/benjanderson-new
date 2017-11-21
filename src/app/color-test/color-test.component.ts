@@ -8,6 +8,8 @@ import 'rxjs/add/observable/throw';
 
 import { D3Service, D3, D3DragEvent, D3ZoomEvent, Selection } from 'd3-ng2-service';
 import { ColorScore } from '../color-test-graph/color-test-graph.component';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-color-test',
@@ -56,10 +58,11 @@ export class ColorTestComponent implements OnInit {
 
   public gender = 'M';
 
-  // public data: Array<ColorScore>;
-  public data: Array<any>;
+  public data: Array<ColorScore>;
 
-  constructor(private http: Http) { }
+  private colorScoreSubscription: Subscription;
+
+  constructor(private http: Http, private db: AngularFirestore) { }
 
   ngOnInit() {
     const setColor = (index: number, array: ColorArray): Color => {
@@ -133,15 +136,22 @@ export class ColorTestComponent implements OnInit {
     const score = { age: this.age, gender: this.gender, score: this.score, clicks: this.clickCount };
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    this.http
-      .post('/api/colortest', JSON.stringify(score), options)
-      .map((res) => {
-        const json = res.json();
+    this.graphVisible = true;
+    this.db.collection('colorStats').add(score).then(() => {
+      this.graphVisible = true;
+
+      const observable: Observable<any> = this.db.collection('colorStats', (ref) => ref
+        .where('clicks', '>', 20))
+        .valueChanges();
+      this.colorScoreSubscription = observable.map((value: Array<ColorScore>) => {
+        this.data = value;
         this.graphVisible = true;
-        this.data = json;
+        this.colorScoreSubscription.unsubscribe();
       })
       .catch(this.handleError)
       .subscribe();
+    })
+    .catch(this.handleError);
   }
 
   public reset() {
