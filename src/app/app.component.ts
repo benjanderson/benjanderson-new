@@ -4,7 +4,8 @@ import 'rxjs/add/operator/map';
 
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { routerTransition, backgroundTransition } from './router.animations';
-import { AnimationStateService } from './services/animation-state.service';
+import { AnimationStateService } from './services/animation-state/animation-state.service';
+import { AppInsightsService } from './services/app-insights/app-insights.service';
 
 @Component({
     selector: 'app-main',
@@ -15,7 +16,7 @@ import { AnimationStateService } from './services/animation-state.service';
 export class AppComponent implements OnInit {
     public showFooter = true;
 
-    constructor(private router: Router, private animationState: AnimationStateService) {
+    constructor(private router: Router, private animationState: AnimationStateService, private appInsightsService: AppInsightsService) {
     }
 
     public getState(outlet): string {
@@ -23,13 +24,12 @@ export class AppComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        // this.appinsightsService.Init({
-        //     instrumentationKey: '22828057-ee08-4280-a79b-ac327059ffb2'
-        // });
-
         this.router.events.map(event => {
+            if (event instanceof NavigationStart) {
+                this.appInsightsService.startTrackPage(event.url);
+            }
             if (event instanceof NavigationEnd) {
-                // this.appinsightsService.trackPageView(event.url);
+                 this.appInsightsService.stopTrackPage(event.url);
                 switch (event.url) {
                     case '/':
                     case '/about-me':

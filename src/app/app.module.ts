@@ -17,9 +17,10 @@ import { ColorTestGraphComponent } from './color-test-graph/color-test-graph.com
 import { AboutMeComponent } from './about-me/about-me.component';
 import { FooterComponent } from './footer/footer.component';
 import { DemoComponent } from './demo/demo.component';
-import { AnimationStateService } from './services/animation-state.service';
+import { AnimationStateService } from './services/animation-state/animation-state.service';
 import { ChessComponent } from './chess/chess.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AppInsightsService } from './services/app-insights/app-insights.service';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyCvXguqBaF3o7jLYbphvszZYZGYuGfWvYA',
@@ -52,7 +53,7 @@ const firebaseConfig = {
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFirestoreModule
     ],
-    providers: [D3Service, AnimationStateService],
+    providers: [D3Service, AnimationStateService, AppInsightsService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
