@@ -13,7 +13,7 @@ const slideLeft = [
                 style({ transform: 'translateX(0%)' }),
             ], { optional: true })
         ]),
-        style({ 'opacity': '1', 'background-url': 'none' }),
+        style({ 'opacity': '1' }),
         group([
             query(':enter', [
                 animate('0.5s ease-in-out', style({ transform: 'translateX(0%)' })),
