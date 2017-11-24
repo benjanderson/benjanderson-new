@@ -5,7 +5,7 @@ import { AppInsights } from 'applicationinsights-js';
 export class AppInsightsService {
 
   private config: Microsoft.ApplicationInsights.IConfig = {
-    instrumentationKey: 'fb7ec282-922c-4d13-8e3b-4ce2282d66be',
+    instrumentationKey: '22828057-ee08-4280-a79b-ac327059ffb2',
   };
 
   constructor() {
