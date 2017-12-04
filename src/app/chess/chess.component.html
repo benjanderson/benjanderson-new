@@ -1,3 +1,19 @@
-<p>
-  Coming soon!
-</p>
+<div class="container">
+  <div class="row">
+      <img src="assets/chess-pieces.svg" width="270" height="90">
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="board col-7">
+      <div *ngFor="let tile of chess.SQUARES" class="tile" >
+        {{tile}}
+      </div>
+    </div>
+  </div>
+  <!-- 
+<div id="drag-1" class="draggable">
+  <p> You can drag one element </p>
+</div>
+<div id="drag-2" class="draggable">
+  <p> with each pointer </p>
+</div>-->
+</div>

@@ -1,0 +1,45 @@
+@import '~bootstrap/scss/bootstrap';
+// @import 'chess-pieces';
+
+#drag-1, #drag-2 {
+    width: 25%;
+    height: 100px;
+    margin: 50px;
+  
+    background-color: #29e;
+    color: white;
+  
+    border-radius: 0.75em;
+    padding: 4%;
+  
+    // -webkit-transform: translate(0px, 0px);
+    //         transform: translate(0px, 0px);
+  }
+  
+.board {
+   display:flex;
+   flex-wrap:wrap;
+  .tile {
+    flex: 0 0 12.5%;
+    @include media-breakpoint-up(sm) {
+
+    }
+  }
+  .tile:before {
+    content:'';
+    float:left;
+    padding-top:100%;
+   }
+   .tile:nth-of-type(16n+16),
+   .tile:nth-of-type(16n+14),
+   .tile:nth-of-type(16n+12),
+   .tile:nth-of-type(16n+10),
+   .tile:nth-of-type(16n+7),
+   .tile:nth-of-type(16n+5),
+   .tile:nth-of-type(16n+3),
+   .tile:nth-of-type(16n+1)
+   {
+       background: black;
+       color:white;
+   }
+}

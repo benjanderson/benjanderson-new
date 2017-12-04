@@ -24,7 +24,8 @@
       "scripts": [
         "./assets/DragDropTouch.js",
         "../node_modules/applicationinsights-js/dist/ai.js",
-        "../node_modules/chess.js/chess.js"
+        "../node_modules/chess.js/chess.js",
+        "../node_modules/interactjs/dist/interact.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

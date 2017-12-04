@@ -32,6 +32,7 @@
     "firebase": "^4.6.1",
     "font-awesome": "^4.7.0",
     "install": "^0.10.2",
+    "interactjs": "^1.2.9",
     "lodash": "^4.17.4",
     "ng2-dnd": "^4.2.0",
     "npm": "^5.5.1",
