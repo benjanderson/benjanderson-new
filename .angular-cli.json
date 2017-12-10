@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "Styles/styles.scss"
+        "styles/styles.scss"
       ],
       "scripts": [
         "./assets/DragDropTouch.js",
