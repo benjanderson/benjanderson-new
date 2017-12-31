@@ -1,10 +1,22 @@
 <div class="container">
-  <div class="row">
-      <img src="assets/chess-pieces.svg" width="270" height="90">
+  <div class="row justify-content-md-center">
+    <div id="white-king" class="draggable"></div>
+    <div id="white-queen" class="draggable"></div>
+    <div id="white-bishop" class="draggable"></div>
+    <div id="white-knight" class="draggable"></div>
+    <div id="white-rook" class="draggable"></div>
+    <div id="white-pawn" class="draggable"></div>
+
+    <div id="black-king" class="draggable"></div>
+    <div id="black-queen" class="draggable"></div>
+    <div id="black-bishop" class="draggable"></div>
+    <div id="black-knight" class="draggable"></div>
+    <div id="black-rook" class="draggable"></div>
+    <div id="black-pawn" class="draggable"></div>
   </div>
   <div class="row justify-content-md-center">
     <div class="board col-7">
-      <div *ngFor="let tile of chess.SQUARES" class="tile" >
+      <div *ngFor="let tile of chess.SQUARES" class="tile">
         {{tile}}
       </div>
     </div>

@@ -1,45 +1,58 @@
 @import '~bootstrap/scss/bootstrap';
-// @import 'chess-pieces';
-
-#drag-1, #drag-2 {
-    width: 25%;
-    height: 100px;
-    margin: 50px;
-  
-    background-color: #29e;
-    color: white;
-  
-    border-radius: 0.75em;
-    padding: 4%;
-  
-    // -webkit-transform: translate(0px, 0px);
-    //         transform: translate(0px, 0px);
-  }
   
 .board {
-   display:flex;
-   flex-wrap:wrap;
+  display:flex;
+  flex-wrap:wrap;
   .tile {
     flex: 0 0 12.5%;
     @include media-breakpoint-up(sm) {
-
-    }
   }
-  .tile:before {
-    content:'';
-    float:left;
-    padding-top:100%;
-   }
-   .tile:nth-of-type(16n+16),
-   .tile:nth-of-type(16n+14),
-   .tile:nth-of-type(16n+12),
-   .tile:nth-of-type(16n+10),
-   .tile:nth-of-type(16n+7),
-   .tile:nth-of-type(16n+5),
-   .tile:nth-of-type(16n+3),
-   .tile:nth-of-type(16n+1)
-   {
-       background: black;
-       color:white;
-   }
 }
+.tile:before {
+  content:'';
+  float:left;
+  padding-top:100%;
+  }
+  .tile:nth-of-type(16n+16),
+  .tile:nth-of-type(16n+14),
+  .tile:nth-of-type(16n+12),
+  .tile:nth-of-type(16n+10),
+  .tile:nth-of-type(16n+7),
+  .tile:nth-of-type(16n+5),
+  .tile:nth-of-type(16n+3),
+  .tile:nth-of-type(16n+1)
+  {
+      background: #769656;
+      color:white;
+  }
+}
+
+@mixin piece($x, $y) {
+  width: 45px;
+  height: 45px;
+  background: url(../../assets/chess-pieces.svg) $x + px $y + px;
+  z-index: 1;
+  cursor: move; 
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  &:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
+}
+
+#white-king { @include piece(0, 0);}
+#white-queen { @include piece(45, 0);}
+#white-bishop { @include piece(90, 0);}
+#white-knight { @include piece(135, 0);}
+#white-rook { @include piece(180, 0);}
+#white-pawn { @include piece(225, 0);}
+
+#black-king { @include piece(0, 45);}
+#black-queen { @include piece(45, 45);}
+#black-bishop { @include piece(90, 45);}
+#black-knight { @include piece(135, 45);}
+#black-rook { @include piece(180, 45);}  
+#black-pawn  { @include piece(225, 45);}  

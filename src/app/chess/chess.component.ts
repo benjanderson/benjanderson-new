@@ -14,13 +14,13 @@ export class ChessComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.chess.SQUARES);
-    while (!this.chess.game_over()) {
-      const moves: ChessMove[] = this.chess.moves();
-      const move: ChessMove = moves[Math.floor(Math.random() * moves.length)];
-      this.chess.move(move);
-    }
-    console.log(this.chess.pgn());
+    // console.log(this.chess.SQUARES);
+    // while (!this.chess.game_over()) {
+    //   const moves: ChessMove[] = this.chess.moves();
+    //   const move: ChessMove = moves[Math.floor(Math.random() * moves.length)];
+    //   this.chess.move(move);
+    // }
+    // console.log(this.chess.pgn());
 
     interact('.draggable')
       .draggable({
@@ -36,20 +36,18 @@ export class ChessComponent implements OnInit {
         autoScroll: true,
 
         // call this function on every dragmove event
-        onmove: this.dragMoveListener,
+        onmove: this.onMove,
         // call this function on every dragend event
-        // onend: function (event) {
-        //   let textEl = event.target.querySelector('p');
-
-        //   textEl && (textEl.textContent =
-        //     'moved a distance of '
-        //     + (Math.sqrt(event.dx * event.dx +
-        //       event.dy * event.dy) | 0) + 'px');
-        // }
+        onend: this.onEnd
       });
   }
 
-  public dragMoveListener(event) {
+  public onEnd(event: any) {
+    const element = event.target;
+    element.classList.remove('active');
+  }
+
+  public onMove(event: any) {
     const target = event.target,
       // keep the dragged position in the data-x/data-y attributes
       x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
@@ -63,7 +61,6 @@ export class ChessComponent implements OnInit {
     // update the posiion attributes
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
+    target.classList.add('active');
   }
-
-
 }
