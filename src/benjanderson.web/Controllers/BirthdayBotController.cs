@@ -1,29 +1,25 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Threading.Tasks;
 using benjanderson.web.Services;
-using Box.V2.Config;
-using Box.V2.JWTAuth;
 using Microsoft.AspNetCore.Mvc;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 
 namespace benjanderson.web.Controllers
 {
-     using Box.V2;
-     using Box.V2.Auth;
-     using Microsoft.Extensions.Configuration;
+     using System.Collections.Generic;
+     using System.Linq;
+     using Dropbox.Api;
 
      [Route("birthdaybot")]
      public class BirthdayBotController : Controller
      {
-          private readonly BoxConfig boxConfig;
+          private readonly DropboxClient client;
 
-          public BirthdayBotController(BoxConfig boxConfig)
+          public BirthdayBotController(DropboxClient client)
           {
-               this.boxConfig = boxConfig;
+               this.client = client;
           }
 
           [HttpGet]
@@ -32,22 +28,12 @@ namespace benjanderson.web.Controllers
                return this.Json(DateTime.Now);
           }
 
-          [HttpPost("{fileId}")]
-          public async Task<IActionResult> Post([FromRoute]string fileId)
+          [HttpPost()]
+          public async Task<IActionResult> Post()
           {
-               if (string.IsNullOrEmpty(fileId))
-               {
-                    throw new ArgumentException("Invalid or null fileId");
-               }
-
-               var boxJwt = new BoxJWTAuth(this.boxConfig);
-
-               var adminToken = boxJwt.AdminToken(); //valid for 60 minutes so should be cached and re-used
-               var client = boxJwt.AdminClient(adminToken);
-
+               var file = await client.Files.DownloadAsync("/Documents/Employee Birthday List.xlsx");
                var birthdays = new List<Birthday>();
-
-               var stream = await client.FilesManager.DownloadStreamAsync(fileId);
+               var stream = await file.GetContentAsStreamAsync();
                IWorkbook workbook = new XSSFWorkbook(stream);
                var sheet = workbook.GetSheet("Sheet1");
                for (var i = 2; i < sheet.LastRowNum; i++)
@@ -87,7 +73,8 @@ namespace benjanderson.web.Controllers
                }
 
                var slackClient =
-                    new SlackClient("https://hooks.slack.com/services/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");
+                    new SlackClient(
+                         "https://hooks.slack.com/services/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");
 
                var lastNight = new DateTime(2010, DateTime.Now.Month, DateTime.Now.Day)
                     .Subtract(TimeSpan.FromDays(1).Subtract(TimeSpan.FromSeconds(1)));
@@ -109,6 +96,7 @@ namespace benjanderson.web.Controllers
                return this.Ok(birthdays);
           }
      }
+
 
      public class Birthday
      {
