@@ -10,11 +10,11 @@
     <ApplicationInsightsAnnotationResourceId>/subscriptions/d3856b74-e0b1-4442-b993-25ba6feb5edb/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/components/benjaminjanderson</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Box.V2.Core" Version="3.2.0" />
+    <PackageReference Include="Box.V2.Core" Version="3.3.0" />
     <PackageReference Include="DotNetCore.NPOI" Version="1.0.2" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="1.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="2.0.2" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services" />

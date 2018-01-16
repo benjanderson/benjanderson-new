@@ -40,12 +40,10 @@ namespace benjanderson.web.Controllers
                     throw new ArgumentException("Invalid or null fileId");
                }
 
-               //var session = new OAuthSession("<DEV TOKEN HERE>", "NOT_NEEDED", 3600, "bearer");
-               //var client = new BoxClient(this.boxConfig, session);
-
                var boxJwt = new BoxJWTAuth(this.boxConfig);
+
                var adminToken = boxJwt.AdminToken(); //valid for 60 minutes so should be cached and re-used
-               var client = boxJwt.AdminClient(adminToken, "225748773", true);
+               var client = boxJwt.AdminClient(adminToken);
 
                var birthdays = new List<Birthday>();
 
@@ -84,7 +82,7 @@ namespace benjanderson.web.Controllers
                     catch (FormatException)
                     {
                          // TODO: log error when I actually have an error logger
-                         //throw new Exception($"{dateString} is not recognized as a valid date", ex);
+                         // throw new Exception($"{dateString} is not recognized as a valid date", ex);
                     }
                }
 
