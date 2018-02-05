@@ -1,6 +1,6 @@
 <form (ngSubmit)="onSubmit()" #heroForm="ngForm" *ngIf="!showWin">
   <h1>Question # {{questionNumber + 1}}</h1>
-  <h2 (click)="headerClick()" [innerText]="question"></h2>
+  <div (click)="headerClick()" [innerHTML]="question"></div>
   <div class="form-group">
     <label for="answer">Answer Here</label>
     <input type="text" class="form-control" required [(ngModel)]="answer" name="name">
@@ -28,7 +28,7 @@
 <div class="card card-outline-warning mb-3 text-center" *ngIf="showWin">
   <div class="card-block">
     <blockquote class="card-blockquote">
-      <p class="win">CONGRATULATIONS! YOU HAVE FINISHED THE FIRST PART. TEXT BEN and he will send you the second part</p>
+      <p class="win">CONGRATULATIONS! You finished, you final prize awaits at dinner with Nyle and Tana.</p>
     </blockquote>
   </div>
 </div>

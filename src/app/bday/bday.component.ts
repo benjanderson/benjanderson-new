@@ -16,21 +16,36 @@ export class BdayComponent implements OnInit {
 
   questions = [
     {
-      'question': 'Ennyn Durin Aran Moria. Pedo Mellon a Minno. Im Narvi hain echant. Celebrimbor o Eregion teithant i thiw hin.',
+      'question': '<h2>Ennyn Durin Aran Moria. Pedo Mellon a Minno. Im Narvi hain echant. Celebrimbor o Eregion teithant i thiw hin.</h2>',
       'answer': 'friend',
-      'clue': '26'
+      'clue': '6'
     },
     {
-      'question': `Square root of ((years of marriage * Anderson grand children)
-       - (bedrooms in our house * Mason age in months) + years in house)`,
+      'question': '<h2>What year was this photo taken?</h2><img class="img-fluid" src="https://i.imgur.com/GOkl9Nk.png"/>',
+      'answer': '2004',
+      'clue': null
+    },
+    {
+      'question': '<h2>Where was this photo taken?</h2><img class="img-fluid" src="https://i.imgur.com/QVttOJq.png"/>',
+      'answer': 'gator land',
+      'clue': null
+    },
+    {
+      'question': '<h2>What area was this photo taken in?</h2><img class="img-fluid" src="https://i.imgur.com/Iflq4N3.png"/>',
+      'answer': 'el paso',
+      'clue': null
+    },
+    {
+      'question': `<h2>Square root of ((years of marriage * Anderson grand children)
+       - (bedrooms in our house * Mason age in months) + years in house)</h2>`,
       'answer': '9',
-      'clue': '12'
+      'clue': '11'
     },
     {
-      'question': `As a stone inside a tree, Ill help your words outlive thee.
-      But if you push me as I stand, the more I move the less I am.`,
+      'question': `<h2>As a stone inside a tree, Ill help your words outlive thee.
+      But if you push me as I stand, the more I move the less I am.</h2>`,
       'answer': 'pencil',
-      'clue': '2'
+      'clue': '37'
     }
   ];
 
@@ -44,8 +59,8 @@ export class BdayComponent implements OnInit {
   headerClick() {
     if (!this.headerClicked) {
       this.headerClicked = true;
-      this.question = `The Doors of Durin, Lord of Moria. Speak, friend, and enter.
-      I, Narvi, made them. Celebrimbor of Hollin drew these signs`;
+      this.question = `<h2>The Doors of Durin, Lord of Moria. Speak, friend, and enter.
+      I, Narvi, made them. Celebrimbor of Hollin drew these signs</h2>`;
     }
   }
 
@@ -58,6 +73,7 @@ export class BdayComponent implements OnInit {
       this.headerClicked = true;
       this.clue = this.questions[this.questionNumber].clue;
       this.questionNumber++;
+      this.answer = '';
       if (this.questionNumber + 1 > this.questions.length) {
         this.showWin = true;
       } else {
