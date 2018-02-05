@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   private message = `Hello
-  My name is Ben and I make apps←←←←web applications←←←←←←←←←←←←←←←←web services←←←←←←←←←←←←stuff. 
+  My name is Ben and I make apps←←←←web applications←←←←←←←←←←←←←←←←web services←←←←←←←←←←←←stuff.
   I currently live in Salt Lake City, Utah.`;
 
   public displayedMessage = '';

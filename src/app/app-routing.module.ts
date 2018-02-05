@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { DemoComponent } from './demo/demo.component';
 import { ChessComponent } from './chess/chess.component';
+import { BdayComponent } from './bday/bday.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, data: { state: 'home' } },
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'demo/chess', component: ChessComponent, pathMatch: 'full', data: { state: 'demo' } },
     { path: 'demo', component: DemoComponent, pathMatch: 'full', data: { state: 'demo' } },
     { path: 'about-me', component: AboutMeComponent, pathMatch: 'full', data: { state: 'about-me' } },
+    { path: 'bday', component: BdayComponent, pathMatch: 'full', data: { state: 'demo' }},
     { path: '**', redirectTo: '' }
 ];
 

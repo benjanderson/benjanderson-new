@@ -11,6 +11,24 @@ import { ColorScore } from '../color-test-graph/color-test-graph.component';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Subscription } from 'rxjs/Subscription';
 
+class Color {
+  public incorrect: boolean;
+
+  public enabled: boolean;
+
+  public message: string;
+
+  constructor(public ordinal: number, public red: number, public green: number, public blue: number) {
+    this.enabled = true;
+  }
+}
+
+class ColorArray {
+  public Color1: Color;
+  public Color2: Color;
+  public Colors: Array<Color>;
+}
+
 @Component({
   selector: 'app-color-test',
   templateUrl: './color-test.component.html',
@@ -205,20 +223,3 @@ export class ColorTestComponent implements OnInit {
   }
 }
 
-class Color {
-  public incorrect: boolean;
-
-  public enabled: boolean;
-
-  public message: string;
-
-  constructor(public ordinal: number, public red: number, public green: number, public blue: number) {
-    this.enabled = true;
-  }
-}
-
-class ColorArray {
-  public Color1: Color;
-  public Color2: Color;
-  public Colors: Array<Color>;
-}

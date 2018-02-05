@@ -21,6 +21,7 @@ import { AnimationStateService } from './services/animation-state/animation-stat
 import { ChessComponent } from './chess/chess.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AppInsightsService } from './services/app-insights/app-insights.service';
+import { BdayComponent } from './bday/bday.component';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyCvXguqBaF3o7jLYbphvszZYZGYuGfWvYA',
@@ -41,7 +42,8 @@ const firebaseConfig = {
         AboutMeComponent,
         FooterComponent,
         DemoComponent,
-        ChessComponent
+        ChessComponent,
+        BdayComponent
     ],
     imports: [
         BrowserModule,
