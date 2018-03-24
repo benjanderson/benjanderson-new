@@ -22,6 +22,7 @@ import { ChessComponent } from './chess/chess.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AppInsightsService } from './services/app-insights/app-insights.service';
 import { BdayComponent } from './bday/bday.component';
+import { CashmereComponent } from './cashmere/cashmere.component';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyCvXguqBaF3o7jLYbphvszZYZGYuGfWvYA',
@@ -43,7 +44,8 @@ const firebaseConfig = {
         FooterComponent,
         DemoComponent,
         ChessComponent,
-        BdayComponent
+        BdayComponent,
+        CashmereComponent
     ],
     imports: [
         BrowserModule,

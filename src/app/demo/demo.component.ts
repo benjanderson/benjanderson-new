@@ -22,10 +22,10 @@ export class DemoComponent implements OnInit, OnDestroy {
       routerLink: '/demo/color-test'
     },
     {
-      title: 'Chess',
-      imageSrc: 'http://files.benjaminjanderson.com/benjaminjandersonblob/demo-chess.png',
-      cssClass: 'chess',
-      routerLink: '/demo/chess'
+      title: 'Cashmere',
+      imageSrc: 'http://files.benjaminjanderson.com/benjaminjandersonblob/demo-cashmere.png',
+      cssClass: 'cashmere',
+      routerLink: '/demo/cashmere'
     }];
 
   constructor() {

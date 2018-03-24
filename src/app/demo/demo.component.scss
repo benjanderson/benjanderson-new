@@ -12,6 +12,9 @@
     &.chess {
         background-color: darken($red, 20); 
     }
+    &.cashmere {
+        background-color: $gray; 
+    }
     
     &:hover img {
         opacity: 1;

@@ -8,11 +8,12 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { DemoComponent } from './demo/demo.component';
 import { ChessComponent } from './chess/chess.component';
 import { BdayComponent } from './bday/bday.component';
+import { CashmereComponent } from './cashmere/cashmere.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, data: { state: 'home' } },
     { path: 'demo/color-test', component: ColorTestComponent, pathMatch: 'full', data: { state: 'demo' } },
-    { path: 'demo/chess', component: ChessComponent, pathMatch: 'full', data: { state: 'demo' } },
+    { path: 'demo/cashmere', component: CashmereComponent, pathMatch: 'full', data: { state: 'demo' } },
     { path: 'demo', component: DemoComponent, pathMatch: 'full', data: { state: 'demo' } },
     { path: 'about-me', component: AboutMeComponent, pathMatch: 'full', data: { state: 'about-me' } },
     { path: 'bday', component: BdayComponent, pathMatch: 'full', data: { state: 'demo' }},

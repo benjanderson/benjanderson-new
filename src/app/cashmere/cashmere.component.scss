@@ -1,0 +1,30 @@
+@import '~bootstrap/scss/bootstrap';
+
+.capture {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow: 0 50px 100px rgba(50,50,93,.05), 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.1);
+}
+
+.container {
+    margin-top: 50px;
+}
+
+em {
+    margin-bottom: 25px;
+}
+
+.main-link {
+    font-size: 20px;
+    margin: 10px 0;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+@include media-breakpoint-down(sm) {
+    a {color: pink}
+}

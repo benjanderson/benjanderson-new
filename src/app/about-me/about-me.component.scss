@@ -28,6 +28,7 @@ $color5: #5BE5A8;
 }
 
 .jumbotron {
+	border-radius: 0;
 	&.one {
 		background-color: $color2;
 	}
